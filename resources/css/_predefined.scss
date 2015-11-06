@@ -1,0 +1,1651 @@
+/* ---------------------------------------------------------------------
+    GLOBAL STYLES
+-----------------------------------------------------------------------*/
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+body {
+	background: #ffffff;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	text-align:left;
+	color:#808080;
+    line-height: 1.4;
+}
+
+body, html {
+    height:100%;
+    width:100%;
+}
+
+a {
+	color:#808080;
+	text-decoration:none;
+
+}
+
+a:hover, a:active {
+	text-decoration:underline;
+}
+
+.right {
+    float:right !important;;
+    padding:0px;
+    margin:0px 0px 0px 0px;
+}
+
+.left {
+    float:left !important;;
+    padding:0px;
+    margin:0px 0px 0px 0px;
+}
+
+.center {
+    margin:0 auto !important;
+    text-align: center !important;
+    display: block !important;
+    float: none !important
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+hr {
+    border:none;
+    border-top:1px solid #f2f2f2;
+    border-bottom:none;
+    border-left:none;
+    border-right:none;
+    display:block;
+    height:0px;
+    overflow:hidden;
+    margin:0px 0px 30px 0px;
+    text-align:center;
+    padding:0;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+.bullet {
+    padding:0 0 20px 2px;
+
+}
+
+.bullet li {
+    line-height: 14px !important;
+    text-indent: -.12em;
+}
+
+.bullet li:before {
+    content: "\2022";
+    padding-right:6px;
+    color:#0167ad;
+    font-size: 12px;
+}
+
+.valign {
+    display: table;
+}
+
+.valign-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.row-block {
+    display: block;
+}
+
+.row-block {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+/* ---------------------------------------------------------------------
+    TYPOGRAPHY
+-----------------------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------------------------------------------------------------
+    ICONS
+-----------------------------------------------------------------------*/
+
+/* ---------------------------------------------------------------------
+    BUTTONS
+-----------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------
+    LAYOUT
+-----------------------------------------------------------------------*/
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.reveal {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.container {
+    max-width: 1200px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    height: 853px;
+    overflow: hidden;
+}
+
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.dove-logo {
+    background: url(../images/dove-logo.png) 0 0 no-repeat;
+    background-size: 244px 177px;
+    width: 244px;
+    height: 177px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.bottom-content {
+    background: url(../images/footer-bg.png) 0 0 no-repeat;
+    background-size: 1300px 152px;
+    width: 100%;
+    height: 152px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.get-real, .get-real-green, .get-real-yellow {
+    background: url(../images/get-real.png) 0 0 no-repeat;
+    background-size: 98px 68px;
+    width: 98px;
+    height: 68px;
+    position: absolute;
+    right: 67px;
+    bottom: 14px;
+}
+
+.get-real-green {
+    background: url(../images/get-real-green.png) 0 0 no-repeat;
+    background-size: 83px 58px;
+    width: 83px;
+    height: 58px;
+}
+
+.get-real-yellow {
+    background: url(../images/get-real-yellow.png) 0 0 no-repeat;
+    background-size: 90px 62px;
+    width: 90px;
+    height: 62px;
+}
+
+.page-num {
+    position: absolute;
+    right: 5px;
+    bottom: 25px;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    width: 50px;
+    text-align: left;
+    letter-spacing: -1px;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 7px;
+    left: auto;
+    right: -6px;
+    z-index: 3;
+}
+
+.bottom-right .get-real {
+    background: url(../images/get-real-orange.png) 0 0 no-repeat;
+    background-size: 98px 68px;
+    width: 98px;
+    height: 68px;
+    position: absolute;
+    right: 63px;
+    bottom: 14px;
+    left: auto;
+}
+
+.bottom-right .page-num {
+    bottom: 20px;
+}
+
+.top-content {
+    background: url(../images/header-bg1.png) 0 0 no-repeat;
+    background-size: 1200px 840px;
+    width: 1200px;
+    height: 840px;
+    position: absolute;
+    top: -500px;
+    left: 0;
+    padding-top: 500px;
+}
+
+.top-content-inner {
+    position: relative;
+}
+
+.top-content-inner h1 {
+    position: absolute;
+    display: block;
+    z-index: 2;
+    text-indent: -99999px;
+}
+
+
+.bricks-bg .container {
+    background: url(../images/page2/body-bg.png) 0 0 no-repeat;
+    background-size: 1217px 913px;
+}
+
+.line-bg .container {
+    background: url(../images/line-bg.png) -350px 100px no-repeat;
+    background-size: 893px 969px;
+}
+
+.line-bg-right .container {
+    background: url(../images/line-bg1.png) 230% 30px no-repeat;
+    background-size: 920px 999px;
+}
+
+.line-bg2 .container {
+    background: url(../images/line-bg2.png) -400px 30px no-repeat;
+    background-size: 1124px 1219px;
+}
+
+.border-bg .container {
+    background: url(../images/border-bg.png) 23px 24px no-repeat;
+    background-size: 1153px 812px;
+}
+
+.green-bg .container {
+    background-color: #9dcc87;
+}
+
+.filler-top {
+    background: url(../images/page2/filler-top.png) 0 0 no-repeat;
+    background-size: 470px 430px;
+    width: 470px;
+    height: 430px;
+    position: absolute;
+    top: -75px;
+    right: -120px;
+}
+
+.filler-bottom {
+    background: url(../images/page2/filler-bottom.png) 0 0 no-repeat;
+    background-size: 497px 370px;
+    width: 497px;
+    height: 370px;
+    position: absolute;
+    bottom: -20px;
+    left: -100px;
+}
+
+.header-2 {
+    background: url(../images/header-bg2.png) 0 0 no-repeat;
+    background-size: 1428px 225px;
+    width: 1428px;
+    height: 225px;
+    top: -50px;
+    left: -170px;
+    padding-top: 50px;
+    padding-left: 170px;
+}
+
+.header-3 {
+    background: url(../images/header-bg3.png) 0 0 no-repeat;
+    background-size: 980px 670px;
+    width: 980px;
+    height: 670px;
+    top: -420px;
+    left: 98px;
+    padding-top: 420px;
+}
+
+.header-4 {
+    background: url(../images/header-bg4.png) 0 0 no-repeat;
+    background-size: 955px 221px;
+    width: 955px;
+    height: 221px;
+    top: -12px;
+    left: 0px;
+    padding-top: 12px;
+}
+
+.header-5 {
+    background: url(../images/header-bg5.png) 0 0 no-repeat;
+    background-size: 1079px 220px;
+    width: 1079px;
+    height: 220px;
+    top: -60px;
+    left: 0px;
+    padding-top: 60px;
+}
+
+.header-6 {
+    background: url(../images/header-bg6.png) 0 0 no-repeat;
+    background-size: 1153px 205px;
+    width: 1153px;
+    height: 205px;
+    top: -60px;
+    left: -120px;
+    padding-top: 60px;
+    padding-left: 120px;
+}
+
+.header-7 {
+    background: url(../images/header-bg7.png) 0 0 no-repeat;
+    background-size: 1185px 195px;
+    width: 1185px;
+    height: 195px;
+    top: -5px;
+    left: 0px;
+    padding-top: 5px;
+    padding-left: 0px;
+}
+
+.play-btn {
+    background: url(../images/play-btn.png) 0 0 no-repeat;
+    background-size: 121px 112px;
+    width: 121px;
+    height: 1112px;
+    position: absolute;
+    top: 78px;
+    right: 62px;
+}
+
+.border-bg .play-btn {
+    right: 82px;
+    top: 68px;
+}
+
+/* Page 1
+-----------------------------------------------------------------------*/
+
+#page-1  {
+    background: url(../images/page1/body-bg.jpg) 50% 0 no-repeat;
+}
+
+#page-1 .artwork-1 {
+    background: url(../images/page1/artwork1.png) 0 0 no-repeat;
+    width: 818px;
+    height: 529px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#page-1 .artwork-2 {
+    background: url(../images/page1/image2.png) 0 0 no-repeat;
+    background-size: 1064px 647px;
+    width: 1064px;
+    height: 647px;
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 55px;
+    z-index: 2;
+}
+
+
+
+/* Page 2
+-----------------------------------------------------------------------*/
+
+
+
+
+
+#page-2 h1 {
+    background: url(../images/page2/h1.png) 0 0 no-repeat;
+    background-size: 876px 151px;
+    width: 876px;
+    height: 151px;
+    top: 25px;
+    left: 105px;
+}
+
+.body-confidence {
+    background: url(../images/page2/body-confidence.png) 0 0 no-repeat;
+    background-size: 664px 515px;
+    width: 664px;
+    height: 515px;
+    position: absolute;
+    top: 252px;
+    left: 248px;
+}
+
+
+
+
+/* Page 3
+-----------------------------------------------------------------------*/
+
+#page-3 h1 {
+    background: url(../images/page3/lets-discuss.png) 0 0 no-repeat;
+    background-size: 1118px 86px;
+    width: 1118px;
+    height: 86px;
+    top: 57px;
+    left: 34px;
+}
+
+#page-3 .image-1, #page-3 .image-2, #page-3 .image-3 {
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+}
+
+#page-3 .image-1 {
+    top: 190px;
+    left: 72px;
+}
+
+#page-3 .image-1 .banner {
+    background: url(../images/page3/image1.png) 0 0 no-repeat;
+    background-size: 325px 427px;
+    width: 325px;
+    height: 427px;
+}
+
+#page-3 .image-2 .banner {
+    background: url(../images/page3/image2.png) 0 0 no-repeat;
+    background-size: 305px 439px;
+    width: 305px;
+    height: 439px;
+}
+
+#page-3 .image-3 .banner {
+    background: url(../images/page3/image3.png) 0 0 no-repeat;
+    background-size: 351px 450px;
+    width: 351px;
+    height: 450px;
+}
+
+#page-3 .image-2 {
+    top: 140px;
+    left: 460px;
+}
+
+#page-3 .image-3 {
+    right: 5px;
+    top: 150px;
+}
+
+#page-3 .arrow-left {
+    background: url(../images/page3/arrow-left.png) 0 0 no-repeat;
+    background-size: 130px 126px;
+    width: 130px;
+    height: 126px;
+    margin: 0 auto;
+}
+
+#page-3 .arrow-down {
+    background: url(../images/page3/arrow-down.png) 0 0 no-repeat;
+    background-size: 64px 178px;
+    width: 64px;
+    height: 178px;
+    margin: 0 auto;
+}
+
+#page-3 .arrow-right {
+    background: url(../images/page3/arrow-right.png) 0 0 no-repeat;
+    background-size: 143px 111px;
+    width: 143px;
+    height: 111px;
+    margin: 0 auto 20px auto;
+}
+
+
+
+/* Page 4
+-----------------------------------------------------------------------*/
+
+#page-4 .top-content {
+    top: -560px;
+    padding-top: 560px;
+}
+
+#page-4 h1 {
+    background: url(../images/page4/what-have-we-learned.png) 0 0 no-repeat;
+    background-size: 1018px 59px;
+    width: 1018px;
+    height: 59px;
+    top: 75px;
+    left: 52px;
+}
+
+#page-4 .text-1 {
+    position: absolute;
+    top: 202px;
+    left: 56px;
+    background: url(../images/page4/text-1.png) 0 0 no-repeat;
+    background-size: 440px 330px;
+    width: 440px;
+    height: 330px;
+}
+
+#page-4 .text-2 {
+    position: absolute;
+    top: 170px;
+    right: 60px;
+    background: url(../images/page4/text-2.png) 0 0 no-repeat;
+    background-size: 358px 348px;
+    width: 358px;
+    height: 348px;
+}
+
+#page-4 .text-3 {
+    position: absolute;
+    top: 473px;
+    left: 202px;
+    background: url(../images/page4/text-3.png) 0 0 no-repeat;
+    background-size: 650px 253px;
+    width: 650px;
+    height: 253px;
+}
+
+
+
+/* Page 4
+-----------------------------------------------------------------------*/
+
+#page-5 h1 {
+    background: url(../images/page5/where-does.png) 0 0 no-repeat;
+    background-size: 1010px 72px;
+    width: 1010px;
+    height: 72px;
+    top: 75px;
+    left: 44px;
+}
+
+#page-5 .image-1 {
+    background: url(../images/page5/image1.png) 0 0 no-repeat;
+    background-size: 242px 396px;
+    width: 242px;
+    height: 396px;
+    position: absolute;
+    top: 228px;
+    left: 50px;
+}
+
+#page-5 .image-2 {
+    background: url(../images/page5/image2.png) 0 0 no-repeat;
+    background-size: 248px 378px;
+    width: 248px;
+    height: 378px;
+    position: absolute;
+    top: 254px;
+    left: 327px;
+}
+
+#page-5 .image-3 {
+    background: url(../images/page5/image3.png) 0 0 no-repeat;
+    background-size: 253px 396px;
+    width: 253px;
+    height: 396px;
+    position: absolute;
+    top: 248px;
+    left: 617px;
+}
+
+#page-5 .image-4 {
+    background: url(../images/page5/image4.png) 0 0 no-repeat;
+    background-size: 242px 396px;
+    width: 242px;
+    height: 396px;
+    position: absolute;
+    top: 243px;
+    right: 44px;
+}
+
+
+
+/* Page 6
+-----------------------------------------------------------------------*/
+
+
+#page-6 h1 {
+    background: url(../images/page6/lets.png) 0 0 no-repeat;
+    background-size: 630px 110px;
+    width: 630px;
+    height: 110px;
+    top: 28px;
+    left: 105px;
+}
+
+#page-6 .image-1 {
+    background: url(../images/page6/image1.png) 0 0 no-repeat;
+    background-size: 673px 249px;
+    width: 673px;
+    height: 249px;
+    position: absolute;
+    top: 183px;
+    left: 58px;
+    z-index: 2;
+}
+
+#page-6 .image-2 {
+    background: url(../images/page6/image2.png) 0 0 no-repeat;
+    background-size: 677px 252px;
+    width: 677px;
+    height: 252px;
+    position: absolute;
+    top: 468px;
+    left: 62px;
+    z-index: 2;
+}
+
+#page-6 .image-3 {
+    background: url(../images/page6/image3.png) 0 0 no-repeat;
+    background-size: 271px 608px;
+    width: 271px;
+    height: 608px;
+    position: absolute;
+    top: 155px;
+    right: 140px;
+    z-index: 2;
+}
+
+
+
+
+/* Page 7
+-----------------------------------------------------------------------*/
+
+#page-7 h1 {
+    background: url(../images/page7/whats-real.png) 0 0 no-repeat;
+    background-size: 748px 57px;
+    width: 748px;
+    height: 57px;
+    top: 49px;
+    left: 46px;
+}
+
+#page-7 .image-1 {
+    background: url(../images/page7/image1.png) 0 0 no-repeat;
+    background-size: 801px 524px;
+    width: 801px;
+    height: 524px;
+    position: absolute;
+    top: 220px;
+    left: 53px;
+    z-index: 2;
+}
+
+
+
+/* Page 8
+-----------------------------------------------------------------------*/
+
+
+#page-8 h1 {
+    background: url(../images/page8/whats-real.png) 0 0 no-repeat;
+    background-size: 668px 57px;
+    width: 668px;
+    height: 57px;
+    top: 49px;
+    left: 46px;
+}
+
+#page-8 .image-1 {
+    background: url(../images/page8/image1.png) 0 0 no-repeat;
+    background-size: 489px 321px;
+    width: 489px;
+    height: 321px;
+    position: absolute;
+    top: 218px;
+    left: 55px;
+    z-index: 2;
+}
+
+#page-8 .image-2 {
+    background: url(../images/page8/image2.png) 0 0 no-repeat;
+    background-size: 509px 332px;
+    width: 509px;
+    height: 332px;
+    position: absolute;
+    top: 336px;
+    left: 578px;
+    z-index: 2;
+}
+
+
+
+/* Page 9
+-----------------------------------------------------------------------*/
+
+#page-9 .header-4 {
+    background: url(../images/header-bg4.png) 0 0 no-repeat;
+    background-size: 955px 221px;
+    width: 955px;
+    height: 221px;
+    top: -55px;
+    left: 0px;
+    padding-top: 55px;
+}
+
+#page-9 h1 {
+    background: url(../images/page9/how-are.png) 0 0 no-repeat;
+    background-size: 737px 94px;
+    width: 737px;
+    height: 94px;
+    top: 28px;
+    left: 77px;
+}
+
+#page-9 .image-1 {
+    background: url(../images/page9/image1.png) 0 0 no-repeat;
+    background-size: 1020px 574px;
+    width: 1020px;
+    height: 574px;
+    position: absolute;
+    top: 168px;
+    left: 84px;
+}
+
+
+/* Page 10
+-----------------------------------------------------------------------*/
+
+
+#page-10 h1 {
+    background: url(../images/page10/what-would.png) 0 0 no-repeat;
+    background-size: 686px 61px;
+    width: 686px;
+    height: 61px;
+    top: 44px;
+    left: 75px;
+}
+
+#page-10 .image-1 {
+    background: url(../images/page10/image1.png) 0 0 no-repeat;
+    background-size: 859px 472px;
+    width: 859px;
+    height: 472px;
+    position: absolute;
+    top: 218px;
+    left: 111px;
+}
+
+
+
+
+/* Page 11
+-----------------------------------------------------------------------*/
+
+
+#page-11 h1, #page-12 h1 {
+    background: url(../images/page11/why-are.png) 0 0 no-repeat;
+    background-size: 617px 105px;
+    width: 617px;
+    height: 105px;
+    top: 18px;
+    left: 95px;
+}
+
+#page-11 .image-1 {
+    background: url(../images/page11/image1.png) 0 0 no-repeat;
+    background-size: 722px 487px;
+    width: 722px;
+    height: 487px;
+    display: block;
+    position: absolute;
+    top: 218px;
+    left: 111px;
+}
+
+
+
+/* Page 12
+-----------------------------------------------------------------------*/
+
+#page-12 .image-1 {
+    background: url(../images/page12/image1.png) 0 0 no-repeat;
+    background-size: 424px 579px;
+    width: 424px;
+    height: 579px;
+    display: block;
+    position: absolute;
+    top: 176px;
+    left: 169px;
+    z-index: 2;
+}
+
+
+
+/* Page 13
+-----------------------------------------------------------------------*/
+
+
+#page-13 h1, #page-16 h1 {
+    background: url(../images/page13/how-do.png) 0 0 no-repeat;
+    background-size: 839px 55px;
+    width: 839px;
+    height: 55px;
+    top: 24px;
+    left: 117px;
+}
+
+#page-13 .image-1 {
+    background: url(../images/page13/image1.png) 0 0 no-repeat;
+    background-size: 1010px 534px;
+    width: 1010px;
+    height: 534px;
+    display: block;
+    position: absolute;
+    top: 176px;
+    left: 68px;
+    z-index: 2;
+}
+
+
+
+
+/* Page 14 and 15
+-----------------------------------------------------------------------*/
+
+#page-14 .image-1, #page-15 .image-1 {
+    background: url(../images/page14/image1.png) 0 0 no-repeat;
+    background-size: 747px 805px;
+    width: 747px;
+    height: 805px;
+    position: absolute;
+    top: 30px;
+    left: 188px;
+    z-index: 2;
+}
+
+
+
+/* Page 16
+-----------------------------------------------------------------------*/
+
+
+#page-16 .image-1 {
+    background: url(../images/page16/image1.png) 0 0 no-repeat;
+    background-size: 1119px 517px;
+    width: 1119px;
+    height: 517px;
+    display: block;
+    position: absolute;
+    top: 184px;
+    left: 68px;
+    z-index: 2;
+}
+
+
+/* Page 17
+-----------------------------------------------------------------------*/
+
+
+#page-17 .image-1 {
+    background: url(../images/page17/image1.jpg) 0 0 no-repeat;
+    background-size: 1181px 824px;
+    width: 1181px;
+    height: 824px;
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 19px;
+    z-index: 2;
+}
+
+#page-17 .bottom-right, #page-34 .bottom-right {
+    right: -15px;
+    bottom: 0px;
+}
+
+
+
+/* Page 18
+-----------------------------------------------------------------------*/
+
+
+#page-18 .image-1 {
+    background: url(../images/page18/image1.png) 0 0 no-repeat;
+    background-size: 741px 192px;
+    width: 741px;
+    height: 192px;
+    display: block;
+    position: absolute;
+    top: 47px;
+    left: 0px;
+    z-index: 2;
+}
+
+#page-18 .image-2 {
+    background: url(../images/page18/image2.png) 0 0 no-repeat;
+    background-size: 723px 476px;
+    width: 723px;
+    height: 476px;
+    display: block;
+    position: absolute;
+    top: 255px;
+    left: 75px;
+    z-index: 2;
+}
+
+
+
+/* Page 19
+-----------------------------------------------------------------------*/
+
+
+#page-19 .image-1 {
+    background: url(../images/page19/image1.png) 0 0 no-repeat;
+    background-size: 867px 385px;
+    width: 867px;
+    height: 385px;
+    position: absolute;
+    top: 190px;
+    left: 180px;
+}
+
+
+
+
+/* Page 20
+-----------------------------------------------------------------------*/
+
+#page-20 .image-1 {
+    background: url(../images/page20/image1.png) 0 0 no-repeat;
+    background-size: 1185px 225px;
+    width: 1185px;
+    height: 225px;
+    position: absolute;
+    top: 50px;
+    left: 55px;
+}
+
+#page-20 .image-2 {
+    background: url(../images/page20/image2.png) 0 0 no-repeat;
+    background-size: 695px 452px;
+    width: 695px;
+    height: 452px;
+    position: absolute;
+    top: 284px;
+    left: 83px;
+}
+
+
+
+/* Page 21
+-----------------------------------------------------------------------*/
+
+#page-21 .image-1 {
+    background: url(../images/page21/image1.png) 0 0 no-repeat;
+    background-size: 615px 120px;
+    width: 615px;
+    height: 120px;
+    position: absolute;
+    top: 97px;
+    left: 0;
+}
+
+#page-21 .image-2 {
+    background: url(../images/page21/image2.jpg) 0 0 no-repeat;
+    background-size: 414px 542px;
+    width: 414px;
+    height: 542px;
+    position: absolute;
+    top: 232px;
+    left: 94px;
+}
+
+#page-21 .image-3 {
+    background: url(../images/page21/image3.png) 0 0 no-repeat;
+    background-size: 296px 420px;
+    width: 296px;
+    height: 420px;
+    position: absolute;
+    top: 219px;
+    left: 541px;
+}
+
+#page-21 .image-4 {
+    background: url(../images/page21/image4.png) 0 0 no-repeat;
+    background-size: 297px 417px;
+    width: 297px;
+    height: 417px;
+    position: absolute;
+    top: 282px;
+    right: 58px;
+}
+
+
+
+/* Page 22
+-----------------------------------------------------------------------*/
+
+#page-22 .header-4 {
+    top: -112px;
+}
+
+#page-22 .image-1 {
+    background: url(../images/page22/image1.png) 0 0 no-repeat;
+    background-size: 895px 60px;
+    width: 895px;
+    height: 60px;
+    position: absolute;
+    top: 98px;
+    left: 63px;
+}
+
+#page-22 .image-2 {
+    background: url(../images/page22/image2.png) 0 0 no-repeat;
+    background-size: 417px 275px;
+    width: 417px;
+    height: 275px;
+    position: absolute;
+    top: 168px;
+    left: 51px;
+}
+
+#page-22 .image-3 {
+    background: url(../images/page22/image3.png) 0 0 no-repeat;
+    background-size: 400px 260px;
+    width: 400px;
+    height: 260px;
+    position: absolute;
+    top: 171px;
+    left: 482px;
+}
+
+#page-22 .image-4 {
+    background: url(../images/page22/image4.png) 0 0 no-repeat;
+    background-size: 281px 359px;
+    width: 281px;
+    height: 359px;
+    position: absolute;
+    top: 164px;
+    right: 24px;
+}
+
+#page-22 .image-5 {
+    background: url(../images/page22/image5.png) 0 0 no-repeat;
+    background-size: 898px 283px;
+    width: 898px;
+    height: 283px;
+    position: absolute;
+    top: 459px;
+    left: 80px;
+}
+
+
+
+
+/* Page 23
+-----------------------------------------------------------------------*/
+
+
+#page-23 .header-4 {
+    top: -80px;
+}
+
+#page-23 .image-1 {
+    background: url(../images/page23/image1.png) 0 0 no-repeat;
+    background-size: 958px 527px;
+    width: 958px;
+    height: 527px;
+    position: absolute;
+    top: 186px;
+    left: 52px;
+}
+
+
+
+
+/* Page 24
+-----------------------------------------------------------------------*/
+
+#page-24 .image-1 {
+    background: url(../images/page24/image1.png) 0 0 no-repeat;
+    background-size: 629px 853px;
+    width: 629px;
+    height: 853px;
+    position: absolute;
+    top: 13px;
+    left: 268px;
+}
+
+
+/* Page 25
+-----------------------------------------------------------------------*/
+
+
+#page-25 .header-4, #page-26 .header-4, #page-28 .header-4, #page-32 .header-4 {
+    top: -40px;
+    padding-top: 40px;
+}
+
+#page-25 h1, #page-26 h1 {
+    background: url(../images/page25/heading.png) 0 0 no-repeat;
+    background-size: 670px 53px;
+    width: 670px;
+    height: 53px;
+    position: absolute;
+    left: 75px;
+    top: 49px;
+}
+
+#page-25 .image-1 {
+    background: url(../images/page25/image1.png) 0 0 no-repeat;
+    background-size: 466px 282px;
+    width: 466px;
+    height: 282px;
+    position: absolute;
+    top: 191px;
+    left: 58px;
+}
+
+#page-25 .image-2 {
+    background: url(../images/page25/image2.png) 0 0 no-repeat;
+    background-size: 466px 289px;
+    width: 466px;
+    height: 289px;
+    position: absolute;
+    top: 179px;
+    left: 534px;
+}
+
+#page-25 .image-3 {
+    background: url(../images/page25/image3.png) 0 0 no-repeat;
+    background-size: 463px 286px;
+    width: 463px;
+    height: 286px;
+    position: absolute;
+    top: 480px;
+    left: 58px;
+}
+
+#page-25 .image-4 {
+    background: url(../images/page25/image4.png) 0 0 no-repeat;
+    background-size: 464px 279px;
+    width: 464px;
+    height: 279px;
+    position: absolute;
+    top: 485px;
+    left: 534px;
+}
+
+
+
+
+/* Page 26
+-----------------------------------------------------------------------*/
+
+#page-26 .image-1 {
+    background: url(../images/page26/image1.png) 0 0 no-repeat;
+    background-size: 970px 473px;
+    width: 970px;
+    height: 473px;
+    position: absolute;
+    top: 206px;
+    left: 59px;
+}
+
+
+
+/* Page 27
+-----------------------------------------------------------------------*/
+
+#page-27 .image-1 {
+    background: url(../images/page27/image1.png) 0 0 no-repeat;
+    background-size: 829px 155px;
+    width: 829px;
+    height: 155px;
+    position: absolute;
+    top: 93px;
+    left: 177px;
+}
+
+#page-27 .image-2 {
+    background: url(../images/page27/image2.png) 0 0 no-repeat;
+    background-size: 345px 488px;
+    width: 345px;
+    height: 488px;
+    position: absolute;
+    top: 292px;
+    left: 84px;
+}
+
+#page-27 .image-3 {
+    background: url(../images/page27/image3.png) 0 0 no-repeat;
+    background-size: 338px 472px;
+    width: 338px;
+    height: 472px;
+    position: absolute;
+    top: 287px;
+    left: 436px;
+}
+
+#page-27 .image-4 {
+    background: url(../images/page27/image4.png) 0 0 no-repeat;
+    background-size: 417px 324px;
+    width: 417px;
+    height: 324px;
+    position: absolute;
+    top: 367px;
+    right: 36px;
+}
+
+
+
+
+/* Page 28
+-----------------------------------------------------------------------*/
+
+
+#page-28 .image-1 {
+    background: url(../images/page28/image1.png) 0 0 no-repeat;
+    background-size: 1017px 496px;
+    width: 1017px;
+    height: 496px;
+    position: absolute;
+    top: 189px;
+    left: 32px;
+}
+
+
+
+/* Page 29
+-----------------------------------------------------------------------*/
+
+
+#page-29 .image-1 {
+    background: url(../images/page29/image1.png) 0 0 no-repeat;
+    background-size: 774px 852px;
+    width: 774px;
+    height: 852px;
+    position: absolute;
+    top: 32px;
+    left: 180px;
+}
+
+
+/* Page 30
+-----------------------------------------------------------------------*/
+
+
+#page-30 .image-1 {
+    background: url(../images/page30/image1.jpg) 0 0 no-repeat;
+    background-size: 1168px 841px;
+    width: 1168px;
+    height: 841px;
+    position: absolute;
+    top: 0px;
+    left: 19px;
+}
+
+#page-30 .page-num {
+    right: -5px;
+}
+
+
+
+
+/* Page 31
+-----------------------------------------------------------------------*/
+
+#page-31 .image-1 {
+    background: url(../images/page31/image1.png) 0 0 no-repeat;
+    background-size: 560px 51px;
+    width: 560px;
+    height: 51px;
+    position: absolute;
+    top: 57px;
+    left: 60px;
+}
+
+#page-31 .image-2, #page-35 .image-2 {
+    background: url(../images/page31/image2.png) 0 0 no-repeat;
+    background-size: 471px 61px;
+    width: 471px;
+    height: 61px;
+    position: absolute;
+    top: 54px;
+    right: 58px;
+}
+
+#page-31 .image-3 {
+    background: url(../images/page31/image3.png) 0 0 no-repeat;
+    background-size: 1058px 639px;
+    width: 1058px;
+    height: 639px;
+    position: absolute;
+    top: 148px;
+    left: 64px;
+}
+
+
+
+
+/* Page 32
+-----------------------------------------------------------------------*/
+
+#page-32 .image-1 {
+    background: url(../images/page32/image1.png) 0 0 no-repeat;
+    background-size: 885px 432px;
+    width: 885px;
+    height: 432px;
+    position: absolute;
+    top: 208px;
+    left: 106px;
+}
+
+
+
+/* Page 33
+-----------------------------------------------------------------------*/
+
+#page-33 .header-1 {
+    left: -140px;
+    padding-left: 140px;
+}
+
+#page-33 h1 {
+    background: url(../images/page33/heading.png) 0 0 no-repeat;
+    background-size: 653px 45px;
+    width: 653px;
+    height: 45px;
+    position: absolute;
+    top: 38px;
+    left: 62px;
+}
+
+#page-33 .image-1 {
+    background: url(../images/page33/image1.png) 0 0 no-repeat;
+    background-size: 645px 64px;
+    width: 645px;
+    height: 64px;
+    position: absolute;
+    top: 147px;
+    left: 47px;
+}
+
+#page-33 .image-2 {
+    background: url(../images/page33/image2.png) 0 0 no-repeat;
+    background-size: 333px 218px;
+    width: 333px;
+    height: 218px;
+    position: absolute;
+    top: 237px;
+    left: 48px;
+}
+
+#page-33 .image-3 {
+    background: url(../images/page33/image3.png) 0 0 no-repeat;
+    background-size: 332px 218px;
+    width: 332px;
+    height: 218px;
+    position: absolute;
+    top: 222px;
+    left: 448px;
+}
+
+#page-33 .image-4 {
+    background: url(../images/page33/image4.png) 0 0 no-repeat;
+    background-size: 216px 317px;
+    width: 216px;
+    height: 317px;
+    position: absolute;
+    top: 138px;
+    right: 135px;
+}
+
+#page-33 .image-5 {
+    background: url(../images/page33/image5.png) 0 0 no-repeat;
+    background-size: 343px 233px;
+    width: 343px;
+    height: 233px;
+    position: absolute;
+    top: 468px;
+    left: 41px;
+}
+
+#page-33 .image-6 {
+    background: url(../images/page33/image6.png) 0 0 no-repeat;
+    background-size: 213px 299px;
+    width: 213px;
+    height: 299px;
+    position: absolute;
+    top: 454px;
+    left: 454px;
+}
+
+#page-33 .image-7 {
+    background: url(../images/page33/image7.png) 0 0 no-repeat;
+    background-size: 307px 214px;
+    width: 307px;
+    height: 214px;
+    position: absolute;
+    top: 474px;
+    right: 192px;
+}
+
+
+
+/* Page 34
+-----------------------------------------------------------------------*/
+
+
+#page-34 .image-1 {
+    background: url(../images/page34/image1.jpg) 0 0 no-repeat;
+    background-size: 1181px 824px;
+    width: 1181px;
+    height: 824px;
+    position: absolute;
+    top: 17px;
+    left: 19px;
+}
+
+
+
+/* Page 35
+-----------------------------------------------------------------------*/
+
+#page-35 h1 {
+    background: url(../images/page35/heading.png) 0 0 no-repeat;
+    background-size: 931px 38px;
+    width: 931px;
+    height: 38px;
+    position: absolute;
+    top: 43px;
+    left: 111px;
+}
+
+#page-35 .image-1 {
+    background: url(../images/page35/image1.png) 0 0 no-repeat;
+    background-size: 457px 43px;
+    width: 457px;
+    height: 43px;
+    position: absolute;
+    top: 57px;
+    left: 60px;
+}
+
+#page-35 .image-2 {
+    background: url(../images/page35/image2.png) 0 0 no-repeat;
+    background-size: 1011px 435px;
+    width: 1011px;
+    height: 435px;
+    position: absolute;
+    top: 228px;
+    left: 100px;
+}
+
+
+.popup-1 {
+    background: url(../images/page35/popup1.png) 0 0 no-repeat;
+    background-size: 819px 527px;
+    width: 819px;
+    height: 527px;
+    position: absolute;
+    top: 203px;
+    left: 208px;
+    z-index: 2;
+}
+
+.popup-2 {
+    background: url(../images/page35/popup2.png) 0 0 no-repeat;
+    background-size: 819px 527px;
+    width: 819px;
+    height: 527px;
+    position: absolute;
+    top: 203px;
+    left: 208px;
+    z-index: 2;
+}
+
+
+/* Page 36
+-----------------------------------------------------------------------*/
+
+.dove-logo-left {
+    background: url(../images/dove-logo-left.png) 0 0 no-repeat;
+    background-size: 246px 182px;
+    width: 246px;
+    height: 182px;
+    position: absolute;
+    left: 32px;
+    top: 27px;
+}
+
+#page-36 .container {
+    background: url(../images/page36/body-bg.jpg) 0 0 no-repeat;
+    background-size: 1200px 853px;
+}
+
+#page-36 .badge {
+    background: url(../images/page36/badge.png) 0 0 no-repeat;
+    background-size: 550px 340px;
+    width: 550px;
+    height: 340px;
+    position: absolute;
+    right: -200px;
+    top: -5px;
+}
+
+#page-36 .image-1 {
+    background: url(../images/page36/image1.png) 0 0 no-repeat;
+    background-size: 966px 363px;
+    width: 966px;
+    height: 363px;
+    position: absolute;
+    top: 335px;
+    left: 128px;
+}
+
+#page-36 .image-2 {
+    background: url(../images/page36/image2.png) 0 0 no-repeat;
+    background-size: 337px 60px;
+    width: 337px;
+    height: 60px;
+    position: absolute;
+    bottom: 28px;
+    left: 173px;
+}
+
+#page-36 .image-3 {
+    background: url(../images/page36/image3.png) 0 0 no-repeat;
+    background-size: 337px 60px;
+    width: 337px;
+    height: 60px;
+    position: absolute;
+    bottom: 28px;
+    right: 171px;
+}
+
+#page-36 .dove-logo {
+    background: url(../images/dove-logo2.png) 0 0 no-repeat;
+    background-size: 181px 123px;
+    width: 181px;
+    height: 123px;
+    position: absolute;
+    top: 91px;
+    left: 94px;
+}
+
+
+
+
+
+/* Page 37
+-----------------------------------------------------------------------*/
+
+#page-37 .container  {
+    background: url(../images/page37/body-bg.jpg) 50% 0 no-repeat;
+    background-size: cover;
+}
+
+#page-37 .image-1 {
+    background: url(../images/page37/image1.png) 0 0 no-repeat;
+    background-size: 816px 554px;
+    width: 816px;
+    height: 554px;
+    position: absolute;
+    top: 110px;
+    left: 55px;
+    z-index: 2;
+}

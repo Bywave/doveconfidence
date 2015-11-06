@@ -1,0 +1,6 @@
+resources/node_modules
+resources/vendors
+resources/.sass-cache
+*.log
+.DS_Store
+Thumbs.db

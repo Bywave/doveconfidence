@@ -10,43 +10,43 @@
 
 
 body {
-	background: #ffffff;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:14px;
-	text-align:left;
-	color:#808080;
+	background-color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-align: left;
+	color: #808080;
     line-height: 1.4;
 }
 
 body, html {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 a {
-	color:#808080;
-	text-decoration:none;
+	color: #808080;
+	text-decoration: none;
 
 }
 
 a:hover, a:active {
-	text-decoration:underline;
+	text-decoration: underline;
 }
 
 .right {
-    float:right !important;;
-    padding:0px;
-    margin:0px 0px 0px 0px;
+    float: right !important;;
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 .left {
-    float:left !important;;
-    padding:0px;
-    margin:0px 0px 0px 0px;
+    float: left !important;;
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 .center {
-    margin:0 auto !important;
+    margin: 0 auto !important;
     text-align: center !important;
     display: block !important;
     float: none !important
@@ -61,17 +61,17 @@ a:hover, a:active {
 }
 
 hr {
-    border:none;
-    border-top:1px solid #f2f2f2;
-    border-bottom:none;
-    border-left:none;
-    border-right:none;
-    display:block;
-    height:0px;
-    overflow:hidden;
-    margin:0px 0px 30px 0px;
-    text-align:center;
-    padding:0;
+    border: none;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    height: 0px;
+    overflow: hidden;
+    margin: 0px 0px 30px 0px;
+    text-align: center;
+    padding: 0;
 }
 
 input::-moz-focus-inner {
@@ -91,7 +91,7 @@ img {
 }
 
 .bullet {
-    padding:0 0 20px 2px;
+    padding: 0 0 20px 2px;
 
 }
 
@@ -102,8 +102,8 @@ img {
 
 .bullet li:before {
     content: "\2022";
-    padding-right:6px;
-    color:#0167ad;
+    padding-right: 6px;
+    color: #0167ad;
     font-size: 12px;
 }
 
@@ -275,7 +275,7 @@ html, body {
     position: absolute;
     top: -500px;
     left: 0;
-    padding-top: 500px;
+    padding-top: 500px !important;
 }
 
 .top-content-inner {
@@ -346,8 +346,8 @@ html, body {
     height: 225px;
     top: -50px;
     left: -170px;
-    padding-top: 50px;
-    padding-left: 170px;
+    padding-top: 50px !important;
+    padding-left: 35px !important;
 }
 
 .header-3 {
@@ -357,7 +357,7 @@ html, body {
     height: 670px;
     top: -420px;
     left: 98px;
-    padding-top: 420px;
+    padding-top: 420px !important;
 }
 
 .header-4 {
@@ -367,7 +367,7 @@ html, body {
     height: 221px;
     top: -12px;
     left: 0px;
-    padding-top: 12px;
+    padding-top: 12px !important;
 }
 
 .header-5 {
@@ -377,7 +377,7 @@ html, body {
     height: 220px;
     top: -60px;
     left: 0px;
-    padding-top: 60px;
+    padding-top: 60px !important;
 }
 
 .header-6 {
@@ -387,8 +387,8 @@ html, body {
     height: 205px;
     top: -60px;
     left: -120px;
-    padding-top: 60px;
-    padding-left: 120px;
+    padding-top: 60px !important;
+    padding-left: 120px !important;
 }
 
 .header-7 {
@@ -398,15 +398,15 @@ html, body {
     height: 195px;
     top: -5px;
     left: 0px;
-    padding-top: 5px;
-    padding-left: 0px;
+    padding-top: 5px !important;
+    padding-left: 0px !important;
 }
 
 .play-btn {
     background: url(../images/play-btn.png) 0 0 no-repeat;
     background-size: 121px 112px;
     width: 121px;
-    height: 1112px;
+    height: 112px;
     position: absolute;
     top: 78px;
     right: 62px;
@@ -563,7 +563,7 @@ html, body {
 
 #page-4 .top-content {
     top: -560px;
-    padding-top: 560px;
+    padding-top: 560px !important;
 }
 
 #page-4 h1 {
@@ -616,7 +616,7 @@ html, body {
     width: 1010px;
     height: 72px;
     top: 75px;
-    left: 44px;
+    left: 180px;
 }
 
 #page-5 .image-1 {
@@ -735,11 +735,11 @@ html, body {
 
 
 
-/* Page 8
+/* Page 9
 -----------------------------------------------------------------------*/
 
 
-#page-8 h1 {
+#page-9 h1 {
     background: url(../images/page8/whats-real.png) 0 0 no-repeat;
     background-size: 668px 57px;
     width: 668px;
@@ -748,7 +748,7 @@ html, body {
     left: 46px;
 }
 
-#page-8 .image-1 {
+#page-9 .image-1 {
     background: url(../images/page8/image1.png) 0 0 no-repeat;
     background-size: 489px 321px;
     width: 489px;
@@ -759,7 +759,7 @@ html, body {
     z-index: 2;
 }
 
-#page-8 .image-2 {
+#page-9 .image-2 {
     background: url(../images/page8/image2.png) 0 0 no-repeat;
     background-size: 509px 332px;
     width: 509px;
@@ -772,20 +772,20 @@ html, body {
 
 
 
-/* Page 9
+/* Page 10
 -----------------------------------------------------------------------*/
 
-#page-9 .header-4 {
+#page-10 .header-4 {
     background: url(../images/header-bg4.png) 0 0 no-repeat;
     background-size: 955px 221px;
     width: 955px;
     height: 221px;
     top: -55px;
     left: 0px;
-    padding-top: 55px;
+    padding-top: 55px !important;
 }
 
-#page-9 h1 {
+#page-10 h1 {
     background: url(../images/page9/how-are.png) 0 0 no-repeat;
     background-size: 737px 94px;
     width: 737px;
@@ -794,7 +794,7 @@ html, body {
     left: 77px;
 }
 
-#page-9 .image-1 {
+#page-10 .image-1 {
     background: url(../images/page9/image1.png) 0 0 no-repeat;
     background-size: 1020px 574px;
     width: 1020px;
@@ -805,11 +805,11 @@ html, body {
 }
 
 
-/* Page 10
+/* Page 11
 -----------------------------------------------------------------------*/
 
 
-#page-10 h1 {
+#page-11 h1 {
     background: url(../images/page10/what-would.png) 0 0 no-repeat;
     background-size: 686px 61px;
     width: 686px;
@@ -818,7 +818,7 @@ html, body {
     left: 75px;
 }
 
-#page-10 .image-1 {
+#page-11 .image-1 {
     background: url(../images/page10/image1.png) 0 0 no-repeat;
     background-size: 859px 472px;
     width: 859px;
@@ -831,11 +831,11 @@ html, body {
 
 
 
-/* Page 11
+/* Page 12
 -----------------------------------------------------------------------*/
 
 
-#page-11 h1, #page-12 h1 {
+#page-12 h1, #page-13 h1 {
     background: url(../images/page11/why-are.png) 0 0 no-repeat;
     background-size: 617px 105px;
     width: 617px;
@@ -844,7 +844,7 @@ html, body {
     left: 95px;
 }
 
-#page-11 .image-1 {
+#page-12 .image-1 {
     background: url(../images/page11/image1.png) 0 0 no-repeat;
     background-size: 722px 487px;
     width: 722px;
@@ -857,10 +857,10 @@ html, body {
 
 
 
-/* Page 12
+/* Page 13
 -----------------------------------------------------------------------*/
 
-#page-12 .image-1 {
+#page-13 .image-1 {
     background: url(../images/page12/image1.png) 0 0 no-repeat;
     background-size: 424px 579px;
     width: 424px;
@@ -874,11 +874,11 @@ html, body {
 
 
 
-/* Page 13
+/* Page 14
 -----------------------------------------------------------------------*/
 
 
-#page-13 h1, #page-16 h1 {
+#page-14 h1, #page-18 h1 {
     background: url(../images/page13/how-do.png) 0 0 no-repeat;
     background-size: 839px 55px;
     width: 839px;
@@ -887,7 +887,7 @@ html, body {
     left: 117px;
 }
 
-#page-13 .image-1 {
+#page-14 .image-1 {
     background: url(../images/page13/image1.png) 0 0 no-repeat;
     background-size: 1010px 534px;
     width: 1010px;
@@ -902,10 +902,10 @@ html, body {
 
 
 
-/* Page 14 and 15
+/* Page 15 and 17
 -----------------------------------------------------------------------*/
 
-#page-14 .image-1, #page-15 .image-1 {
+#page-15 .image-1, #page-17 .image-1 {
     background: url(../images/page14/image1.png) 0 0 no-repeat;
     background-size: 747px 805px;
     width: 747px;
@@ -918,11 +918,11 @@ html, body {
 
 
 
-/* Page 16
+/* Page 18
 -----------------------------------------------------------------------*/
 
 
-#page-16 .image-1 {
+#page-18 .image-1 {
     background: url(../images/page16/image1.png) 0 0 no-repeat;
     background-size: 1119px 517px;
     width: 1119px;
@@ -935,11 +935,11 @@ html, body {
 }
 
 
-/* Page 17
+/* Page 19
 -----------------------------------------------------------------------*/
 
 
-#page-17 .image-1 {
+#page-19 .image-1 {
     background: url(../images/page17/image1.jpg) 0 0 no-repeat;
     background-size: 1181px 824px;
     width: 1181px;
@@ -951,18 +951,18 @@ html, body {
     z-index: 2;
 }
 
-#page-17 .bottom-right, #page-34 .bottom-right {
+#page-19 .bottom-right, #page-39 .bottom-right {
     right: -15px;
     bottom: 0px;
 }
 
 
 
-/* Page 18
+/* Page 20
 -----------------------------------------------------------------------*/
 
 
-#page-18 .image-1 {
+#page-20 .image-1 {
     background: url(../images/page18/image1.png) 0 0 no-repeat;
     background-size: 741px 192px;
     width: 741px;
@@ -974,7 +974,7 @@ html, body {
     z-index: 2;
 }
 
-#page-18 .image-2 {
+#page-20 .image-2 {
     background: url(../images/page18/image2.png) 0 0 no-repeat;
     background-size: 723px 476px;
     width: 723px;
@@ -988,11 +988,11 @@ html, body {
 
 
 
-/* Page 19
+/* Page 22
 -----------------------------------------------------------------------*/
 
 
-#page-19 .image-1 {
+#page-22 .image-1 {
     background: url(../images/page19/image1.png) 0 0 no-repeat;
     background-size: 867px 385px;
     width: 867px;
@@ -1005,10 +1005,10 @@ html, body {
 
 
 
-/* Page 20
+/* Page 23
 -----------------------------------------------------------------------*/
 
-#page-20 .image-1 {
+#page-23 .image-1 {
     background: url(../images/page20/image1.png) 0 0 no-repeat;
     background-size: 1185px 225px;
     width: 1185px;
@@ -1018,7 +1018,7 @@ html, body {
     left: 55px;
 }
 
-#page-20 .image-2 {
+#page-23 .image-2 {
     background: url(../images/page20/image2.png) 0 0 no-repeat;
     background-size: 695px 452px;
     width: 695px;
@@ -1030,10 +1030,10 @@ html, body {
 
 
 
-/* Page 21
+/* Page 24
 -----------------------------------------------------------------------*/
 
-#page-21 .image-1 {
+#page-24 .image-1 {
     background: url(../images/page21/image1.png) 0 0 no-repeat;
     background-size: 615px 120px;
     width: 615px;
@@ -1043,7 +1043,7 @@ html, body {
     left: 0;
 }
 
-#page-21 .image-2 {
+#page-24 .image-2 {
     background: url(../images/page21/image2.jpg) 0 0 no-repeat;
     background-size: 414px 542px;
     width: 414px;
@@ -1053,7 +1053,7 @@ html, body {
     left: 94px;
 }
 
-#page-21 .image-3 {
+#page-24 .image-3 {
     background: url(../images/page21/image3.png) 0 0 no-repeat;
     background-size: 296px 420px;
     width: 296px;
@@ -1063,7 +1063,7 @@ html, body {
     left: 541px;
 }
 
-#page-21 .image-4 {
+#page-24 .image-4 {
     background: url(../images/page21/image4.png) 0 0 no-repeat;
     background-size: 297px 417px;
     width: 297px;
@@ -1075,14 +1075,14 @@ html, body {
 
 
 
-/* Page 22
+/* Page 25
 -----------------------------------------------------------------------*/
 
-#page-22 .header-4 {
+#page-25 .header-4 {
     top: -112px;
 }
 
-#page-22 .image-1 {
+#page-25 .image-1 {
     background: url(../images/page22/image1.png) 0 0 no-repeat;
     background-size: 895px 60px;
     width: 895px;
@@ -1092,7 +1092,7 @@ html, body {
     left: 63px;
 }
 
-#page-22 .image-2 {
+#page-25 .image-2 {
     background: url(../images/page22/image2.png) 0 0 no-repeat;
     background-size: 417px 275px;
     width: 417px;
@@ -1102,7 +1102,7 @@ html, body {
     left: 51px;
 }
 
-#page-22 .image-3 {
+#page-25 .image-3 {
     background: url(../images/page22/image3.png) 0 0 no-repeat;
     background-size: 400px 260px;
     width: 400px;
@@ -1112,7 +1112,7 @@ html, body {
     left: 482px;
 }
 
-#page-22 .image-4 {
+#page-25 .image-4 {
     background: url(../images/page22/image4.png) 0 0 no-repeat;
     background-size: 281px 359px;
     width: 281px;
@@ -1122,7 +1122,7 @@ html, body {
     right: 24px;
 }
 
-#page-22 .image-5 {
+#page-25 .image-5 {
     background: url(../images/page22/image5.png) 0 0 no-repeat;
     background-size: 898px 283px;
     width: 898px;
@@ -1135,15 +1135,15 @@ html, body {
 
 
 
-/* Page 23
+/* Page 26
 -----------------------------------------------------------------------*/
 
 
-#page-23 .header-4 {
+#page-26 .header-4 {
     top: -80px;
 }
 
-#page-23 .image-1 {
+#page-26 .image-1 {
     background: url(../images/page23/image1.png) 0 0 no-repeat;
     background-size: 958px 527px;
     width: 958px;
@@ -1156,10 +1156,10 @@ html, body {
 
 
 
-/* Page 24
+/* Page 27
 -----------------------------------------------------------------------*/
 
-#page-24 .image-1 {
+#page-27 .image-1 {
     background: url(../images/page24/image1.png) 0 0 no-repeat;
     background-size: 629px 853px;
     width: 629px;
@@ -1170,16 +1170,16 @@ html, body {
 }
 
 
-/* Page 25
+/* Page 29
 -----------------------------------------------------------------------*/
 
 
-#page-25 .header-4, #page-26 .header-4, #page-28 .header-4, #page-32 .header-4 {
+#page-29 .header-4, #page-30 .header-4, #page-32 .header-4, #page-37 .header-4 {
     top: -40px;
     padding-top: 40px;
 }
 
-#page-25 h1, #page-26 h1 {
+#page-29 h1, #page-32 h1 {
     background: url(../images/page25/heading.png) 0 0 no-repeat;
     background-size: 670px 53px;
     width: 670px;
@@ -1189,7 +1189,7 @@ html, body {
     top: 49px;
 }
 
-#page-25 .image-1 {
+#page-29 .image-1 {
     background: url(../images/page25/image1.png) 0 0 no-repeat;
     background-size: 466px 282px;
     width: 466px;
@@ -1199,7 +1199,7 @@ html, body {
     left: 58px;
 }
 
-#page-25 .image-2 {
+#page-29 .image-2 {
     background: url(../images/page25/image2.png) 0 0 no-repeat;
     background-size: 466px 289px;
     width: 466px;
@@ -1209,7 +1209,7 @@ html, body {
     left: 534px;
 }
 
-#page-25 .image-3 {
+#page-29 .image-3 {
     background: url(../images/page25/image3.png) 0 0 no-repeat;
     background-size: 463px 286px;
     width: 463px;
@@ -1219,7 +1219,7 @@ html, body {
     left: 58px;
 }
 
-#page-25 .image-4 {
+#page-29 .image-4 {
     background: url(../images/page25/image4.png) 0 0 no-repeat;
     background-size: 464px 279px;
     width: 464px;
@@ -1232,10 +1232,10 @@ html, body {
 
 
 
-/* Page 26
+/* Page 30
 -----------------------------------------------------------------------*/
 
-#page-26 .image-1 {
+#page-30 .image-1 {
     background: url(../images/page26/image1.png) 0 0 no-repeat;
     background-size: 970px 473px;
     width: 970px;
@@ -1247,10 +1247,10 @@ html, body {
 
 
 
-/* Page 27
+/* Page 31
 -----------------------------------------------------------------------*/
 
-#page-27 .image-1 {
+#page-31 .image-1 {
     background: url(../images/page27/image1.png) 0 0 no-repeat;
     background-size: 829px 155px;
     width: 829px;
@@ -1260,7 +1260,7 @@ html, body {
     left: 177px;
 }
 
-#page-27 .image-2 {
+#page-31 .image-2 {
     background: url(../images/page27/image2.png) 0 0 no-repeat;
     background-size: 345px 488px;
     width: 345px;
@@ -1270,7 +1270,7 @@ html, body {
     left: 84px;
 }
 
-#page-27 .image-3 {
+#page-31 .image-3 {
     background: url(../images/page27/image3.png) 0 0 no-repeat;
     background-size: 338px 472px;
     width: 338px;
@@ -1280,7 +1280,7 @@ html, body {
     left: 436px;
 }
 
-#page-27 .image-4 {
+#page-31 .image-4 {
     background: url(../images/page27/image4.png) 0 0 no-repeat;
     background-size: 417px 324px;
     width: 417px;
@@ -1293,11 +1293,11 @@ html, body {
 
 
 
-/* Page 28
+/* Page 32
 -----------------------------------------------------------------------*/
 
 
-#page-28 .image-1 {
+#page-32 .image-1 {
     background: url(../images/page28/image1.png) 0 0 no-repeat;
     background-size: 1017px 496px;
     width: 1017px;
@@ -1309,11 +1309,11 @@ html, body {
 
 
 
-/* Page 29
+/* Page 33
 -----------------------------------------------------------------------*/
 
 
-#page-29 .image-1 {
+#page-33 .image-1 {
     background: url(../images/page29/image1.png) 0 0 no-repeat;
     background-size: 774px 852px;
     width: 774px;
@@ -1324,11 +1324,11 @@ html, body {
 }
 
 
-/* Page 30
+/* Page 35
 -----------------------------------------------------------------------*/
 
 
-#page-30 .image-1 {
+#page-35 .image-1 {
     background: url(../images/page30/image1.jpg) 0 0 no-repeat;
     background-size: 1168px 841px;
     width: 1168px;
@@ -1338,17 +1338,17 @@ html, body {
     left: 19px;
 }
 
-#page-30 .page-num {
+#page-35 .page-num {
     right: -5px;
 }
 
 
 
 
-/* Page 31
+/* Page 36
 -----------------------------------------------------------------------*/
 
-#page-31 .image-1 {
+#page-36 .image-1 {
     background: url(../images/page31/image1.png) 0 0 no-repeat;
     background-size: 560px 51px;
     width: 560px;
@@ -1358,7 +1358,7 @@ html, body {
     left: 60px;
 }
 
-#page-31 .image-2, #page-35 .image-2 {
+#page-36 .image-2, #page-40 .image-2 {
     background: url(../images/page31/image2.png) 0 0 no-repeat;
     background-size: 471px 61px;
     width: 471px;
@@ -1368,7 +1368,7 @@ html, body {
     right: 58px;
 }
 
-#page-31 .image-3 {
+#page-36 .image-3 {
     background: url(../images/page31/image3.png) 0 0 no-repeat;
     background-size: 1058px 639px;
     width: 1058px;
@@ -1381,10 +1381,10 @@ html, body {
 
 
 
-/* Page 32
+/* Page 37
 -----------------------------------------------------------------------*/
 
-#page-32 .image-1 {
+#page-37 .image-1 {
     background: url(../images/page32/image1.png) 0 0 no-repeat;
     background-size: 885px 432px;
     width: 885px;
@@ -1396,15 +1396,15 @@ html, body {
 
 
 
-/* Page 33
+/* Page 38
 -----------------------------------------------------------------------*/
 
-#page-33 .header-1 {
+#page-38 .header-1 {
     left: -140px;
     padding-left: 140px;
 }
 
-#page-33 h1 {
+#page-38 h1 {
     background: url(../images/page33/heading.png) 0 0 no-repeat;
     background-size: 653px 45px;
     width: 653px;
@@ -1414,7 +1414,7 @@ html, body {
     left: 62px;
 }
 
-#page-33 .image-1 {
+#page-38 .image-1 {
     background: url(../images/page33/image1.png) 0 0 no-repeat;
     background-size: 645px 64px;
     width: 645px;
@@ -1424,7 +1424,7 @@ html, body {
     left: 47px;
 }
 
-#page-33 .image-2 {
+#page-38 .image-2 {
     background: url(../images/page33/image2.png) 0 0 no-repeat;
     background-size: 333px 218px;
     width: 333px;
@@ -1434,7 +1434,7 @@ html, body {
     left: 48px;
 }
 
-#page-33 .image-3 {
+#page-38 .image-3 {
     background: url(../images/page33/image3.png) 0 0 no-repeat;
     background-size: 332px 218px;
     width: 332px;
@@ -1444,7 +1444,7 @@ html, body {
     left: 448px;
 }
 
-#page-33 .image-4 {
+#page-38 .image-4 {
     background: url(../images/page33/image4.png) 0 0 no-repeat;
     background-size: 216px 317px;
     width: 216px;
@@ -1454,7 +1454,7 @@ html, body {
     right: 135px;
 }
 
-#page-33 .image-5 {
+#page-38 .image-5 {
     background: url(../images/page33/image5.png) 0 0 no-repeat;
     background-size: 343px 233px;
     width: 343px;
@@ -1464,7 +1464,7 @@ html, body {
     left: 41px;
 }
 
-#page-33 .image-6 {
+#page-38 .image-6 {
     background: url(../images/page33/image6.png) 0 0 no-repeat;
     background-size: 213px 299px;
     width: 213px;
@@ -1474,7 +1474,7 @@ html, body {
     left: 454px;
 }
 
-#page-33 .image-7 {
+#page-38 .image-7 {
     background: url(../images/page33/image7.png) 0 0 no-repeat;
     background-size: 307px 214px;
     width: 307px;
@@ -1486,11 +1486,11 @@ html, body {
 
 
 
-/* Page 34
+/* Page 39
 -----------------------------------------------------------------------*/
 
 
-#page-34 .image-1 {
+#page-39 .image-1 {
     background: url(../images/page34/image1.jpg) 0 0 no-repeat;
     background-size: 1181px 824px;
     width: 1181px;
@@ -1502,10 +1502,10 @@ html, body {
 
 
 
-/* Page 35
+/* Page 40
 -----------------------------------------------------------------------*/
 
-#page-35 h1 {
+#page-40 h1 {
     background: url(../images/page35/heading.png) 0 0 no-repeat;
     background-size: 931px 38px;
     width: 931px;
@@ -1515,7 +1515,7 @@ html, body {
     left: 111px;
 }
 
-#page-35 .image-1 {
+#page-40 .image-1 {
     background: url(../images/page35/image1.png) 0 0 no-repeat;
     background-size: 457px 43px;
     width: 457px;
@@ -1525,7 +1525,7 @@ html, body {
     left: 60px;
 }
 
-#page-35 .image-2 {
+#page-40 .image-2 {
     background: url(../images/page35/image2.png) 0 0 no-repeat;
     background-size: 1011px 435px;
     width: 1011px;
@@ -1559,7 +1559,7 @@ html, body {
 }
 
 
-/* Page 36
+/* Page 41
 -----------------------------------------------------------------------*/
 
 .dove-logo-left {
@@ -1572,12 +1572,12 @@ html, body {
     top: 27px;
 }
 
-#page-36 .container {
+#page-41 .container {
     background: url(../images/page36/body-bg.jpg) 0 0 no-repeat;
     background-size: 1200px 853px;
 }
 
-#page-36 .badge {
+#page-41 .badge {
     background: url(../images/page36/badge.png) 0 0 no-repeat;
     background-size: 550px 340px;
     width: 550px;
@@ -1587,7 +1587,7 @@ html, body {
     top: -5px;
 }
 
-#page-36 .image-1 {
+#page-41 .image-1 {
     background: url(../images/page36/image1.png) 0 0 no-repeat;
     background-size: 966px 363px;
     width: 966px;
@@ -1597,7 +1597,7 @@ html, body {
     left: 128px;
 }
 
-#page-36 .image-2 {
+#page-41 .image-2 {
     background: url(../images/page36/image2.png) 0 0 no-repeat;
     background-size: 337px 60px;
     width: 337px;
@@ -1607,7 +1607,7 @@ html, body {
     left: 173px;
 }
 
-#page-36 .image-3 {
+#page-41 .image-3 {
     background: url(../images/page36/image3.png) 0 0 no-repeat;
     background-size: 337px 60px;
     width: 337px;
@@ -1617,7 +1617,7 @@ html, body {
     right: 171px;
 }
 
-#page-36 .dove-logo {
+#page-41 .dove-logo {
     background: url(../images/dove-logo2.png) 0 0 no-repeat;
     background-size: 181px 123px;
     width: 181px;
@@ -1631,15 +1631,15 @@ html, body {
 
 
 
-/* Page 37
+/* Page 42
 -----------------------------------------------------------------------*/
 
-#page-37 .container  {
+#page-42 .container  {
     background: url(../images/page37/body-bg.jpg) 50% 0 no-repeat;
     background-size: cover;
 }
 
-#page-37 .image-1 {
+#page-42 .image-1 {
     background: url(../images/page37/image1.png) 0 0 no-repeat;
     background-size: 816px 554px;
     width: 816px;

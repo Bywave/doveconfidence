@@ -1,2 +1,2 @@
-Reveal.initialize({controls:!0,progress:!0,width:1200,height:853,transition:"fade",backgroundTransition:"fade",margin:0,minScale:.2,maxScale:2,controls:!0,progress:!0,history:!0,center:!0,transition:"convex"});
+Reveal.initialize({controls:!0,progress:!0,width:1200,height:853,transition:"fade",backgroundTransition:"fade",margin:0,minScale:.2,maxScale:2,controls:!0,progress:!0,history:!0,center:!0,transition:"convex"}),$("div.play-btn").on("click",function(){Reveal.next()}),Reveal.addEventListener("slidechanged",function(e){var a=$(e.previousSlide),i=$(e.currentSlide);a.find("iframe[data-autoplay]").length>0&&$("div.reveal").removeClass("dark"),i.find("iframe[data-autoplay]").length>0&&$("div.reveal").addClass("dark")});
 //# sourceMappingURL=application.js.map

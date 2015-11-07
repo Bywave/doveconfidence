@@ -14,3 +14,20 @@ Reveal.initialize({
   center: true,
   transition: 'convex'
 });
+
+$('div.play-btn').on('click', function() {
+  Reveal.next();
+});
+
+Reveal.addEventListener('slidechanged', function(event) {
+  var previousSlide = $(event.previousSlide);
+  var currentSlide = $(event.currentSlide);
+
+  if (previousSlide.find('iframe[data-autoplay]').length > 0) {
+    $('div.reveal').removeClass('dark');
+  }
+
+  if (currentSlide.find('iframe[data-autoplay]').length > 0) {
+    $('div.reveal').addClass('dark');
+  }
+});

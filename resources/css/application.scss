@@ -1,3 +1,65 @@
 @import './../vendors/normalize-css/normalize';
 @import './../vendors/reveal.js/css/reveal';
+@import './../vendors/reveal.js/css/theme/template/mixins';
+@import './../vendors/reveal.js/css/theme/template/settings';
 @import 'predefined';
+
+$backgroundColor: #fff;
+$mainColor: #222;
+$headingColor: #222;
+$mainFontSize: 38px;
+$mainFont: Helvetica, sans-serif;
+$headingFont: Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+@import './../vendors/reveal.js/css/theme/template/theme';
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+.reveal {
+  background-color: $backgroundColor;
+  -webkit-transition: background 500ms ease;
+  -moz-transition: background 500ms ease;
+  -ms-transition: background 500ms ease;
+  -o-transition: background 500ms ease;
+  transition: background 500ms ease;
+
+  &.dark {
+    background-color: #000;
+  }
+
+  .slides > section {
+    padding: 0;
+
+    [data-autoplay] {
+      background-color: #000;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+.page-num {
+  display: none;
+}
+
+.play-btn {
+  cursor: pointer;
+}

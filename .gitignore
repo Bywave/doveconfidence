@@ -4,3 +4,5 @@ resources/.sass-cache
 *.log
 .DS_Store
 Thumbs.db
+*.sublime-project
+*.sublime-workspace

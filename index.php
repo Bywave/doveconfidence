@@ -9,6 +9,78 @@
 	<link href="css/application.css" media="screen, projection" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<div id="intro-form" style="display: none;">
+		<div id="first-block">
+			<p>Welcome to the interactive version of the <br>Confident Me workshop.</p>
+			<p>If you are here as part of your class preparation, we recommend that in the first instance you download and review the teacher's guide and the pdf copy of the Confident Me workshop.<br>
+				 You do not need to proceed further at this stage.</p>
+			<p>When you are ready to teach the Confident Me workshop in your classroom, please proceed to the next page and complete the simple registration process.</p>
+			<button id="show-second-block">NEXT ></button>
+		</div>
+		<form id="second-block" style="display: none;">
+			<fieldset>
+				<div class="field-group">
+					<div class="field">
+						<label for="name">Your name</label>
+						<input id="name" type="text" name="name" placeholder="First and last name" value="">
+					</div>
+					<div class="field">
+						<label for="schoolyear">Which year is the resource being used to teach?</label>
+						<select id="schoolyear" name="schoolyear">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field schoolname">
+						<label for="schoolname">Name of your school</label>
+						<input id="schoolname" type="text" name="schoolname" value="">
+            <ul id="schoolnames"></ul>
+					</div>
+					<div class="field">
+						<label for="totalstudents">Total number of students you teach</label>
+						<input id="totalstudents" type="number" name="totalstudents" value="">
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field">
+						<label for="schoolrole">What is your role at the school?</label>
+						<select id="schoolrole" name="schoolrole">
+							<option value="Primary School Teacher">Primary School Teacher</option>
+							<option value="PDHPE Teacher (Secondary School)">PDHPE Teacher (Secondary School)</option>
+							<option value="Other">Other (Please Specify)</option>
+						</select>
+						<input id="schoolroleother" type="text" name="schoolroleother" value="" style="display: none;">
+					</div>
+					<div class="field">
+						<label for="email">Your email address</label>
+						<input id="email" type="email" name="email" placeholder="name@domain.edu.au" value="">
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field">
+						<label for="classname">Name of your class</label>
+						<input id="classname" type="text" name="classname" value="">
+					</div>
+				</div>
+				<div class="field-group">
+					<label><input type="checkbox" id="agree" name="agree" value="agree"> I agree to the <a href="http://www.unilever.com.au/resource/legalnotice/" target="_blank">terms and conditions</a>.</label>
+					<button id="submit-intro-form" disabled>START</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 	<div class="reveal">
 		<div class="slides">
 			<section id="page-1" class="slide">
@@ -121,7 +193,7 @@
 						</div>
 					</div>
 					<div class="image-1"></div>
-					<div class="play-btn"></div>
+					<button class="play-btn"></button>
 					<div class="bottom-content">
 						<div class="get-real"></div>
 						<div class="page-num">7</div>
@@ -129,7 +201,7 @@
 				</div>
 			</section>
 			<section id="page-8" class="slide line-bg-right">
-				<iframe data-autoplay src="https://www.youtube.com/embed/YE7VzlLtp-4?controls=0" frameborder="0" allowfullscreen></iframe>
+				<iframe data-autoplay src="https://www.youtube.com/embed/RX4N1WTLqjo?controls=0" frameborder="0" allowfullscreen></iframe>
 			</section>
 			<section id="page-9" class="slide line-bg">
 				<div class="container">
@@ -226,7 +298,7 @@
 			<section id="page-15" class="slide border-bg">
 				<div class="container">
 					<div class="image-1"></div>
-					<div class="play-btn"></div>
+					<button class="play-btn"></button>
 					<div class="bottom-right">
 						<div class="get-real"></div>
 						<div class="page-num">15</div>
@@ -234,7 +306,7 @@
 				</div>
 			</section>
 			<section id="page-16" class="slide line-bg-right">
-				<iframe data-autoplay src="https://www.youtube.com/embed/YE7VzlLtp-4?controls=0" frameborder="0" allowfullscreen></iframe>
+				<iframe data-autoplay src="https://www.youtube.com/embed/KbWytwYTZJM?controls=0" frameborder="0" allowfullscreen></iframe>
 			</section>
 			<section id="page-17" class="slide border-bg">
 				<div class="container">
@@ -271,7 +343,7 @@
 				<div class="container">
 					<div class="image-1"></div>
 					<div class="image-2"></div>
-					<div class="play-btn"></div>
+					<button class="play-btn"></button>
 					<div class="bottom-right">
 						<div class="get-real"></div>
 						<div class="page-num">20</div>
@@ -339,7 +411,7 @@
 			<section id="page-27" class="slide border-bg">
 				<div class="container">
 					<div class="image-1"></div>
-					<div class="play-btn"></div>
+					<button class="play-btn"></button>
 					<div class="bottom-right">
 						<div class="get-real"></div>
 						<div class="page-num">27</div>
@@ -347,7 +419,7 @@
 				</div>
 			</section>
 			<section id="page-28" class="slide line-bg-right">
-				<iframe data-autoplay src="https://www.youtube.com/embed/YE7VzlLtp-4?controls=0" frameborder="0" allowfullscreen></iframe>
+				<iframe data-autoplay src="https://www.youtube.com/embed/8PMzuo1KtRk?controls=0" frameborder="0" allowfullscreen></iframe>
 			</section>
 			<section id="page-29" class="slide line-bg-right">
 				<div class="container">
@@ -409,7 +481,7 @@
 			<section id="page-33" class="slide border-bg">
 				<div class="container">
 					<div class="image-1"></div>
-					<div class="play-btn"></div>
+					<button class="play-btn"></button>
 					<div class="bottom-right">
 						<div class="get-real-yellow"></div>
 						<div class="page-num">33</div>
@@ -417,7 +489,7 @@
 				</div>
 			</section>
 			<section id="page-34" class="slide line-bg-right">
-				<iframe data-autoplay src="https://www.youtube.com/embed/YE7VzlLtp-4?controls=0" frameborder="0" allowfullscreen></iframe>
+				<iframe data-autoplay src="https://www.youtube.com/embed/tKm3Nv2c3Wo?controls=0" frameborder="0" allowfullscreen></iframe>
 			</section>
 			<section id="page-35" class="slide green-bg">
 				<div class="container">

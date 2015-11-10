@@ -1,8 +1,11 @@
 @import './../vendors/normalize-css/normalize';
+@import './../vendors/bourbon/app/assets/stylesheets/_bourbon';
 @import './../vendors/reveal.js/css/reveal';
 @import './../vendors/reveal.js/css/theme/template/mixins';
 @import './../vendors/reveal.js/css/theme/template/settings';
 @import 'predefined';
+@import './../vendors/jquery-selectric/public/selectric.css';
+@import 'checkbox';
 
 $backgroundColor: #fff;
 $mainColor: #222;
@@ -32,11 +35,7 @@ section.has-dark-background {
 
 .reveal {
   background-color: $backgroundColor;
-  -webkit-transition: background 500ms ease;
-  -moz-transition: background 500ms ease;
-  -ms-transition: background 500ms ease;
-  -o-transition: background 500ms ease;
-  transition: background 500ms ease;
+	@include transition(background 500ms ease);
 
   &.dark {
     background-color: #000;
@@ -61,5 +60,175 @@ section.has-dark-background {
 }
 
 .play-btn {
-  cursor: pointer;
+  border: 0 none;
+	outline: 0;
+}
+
+.popup_background {
+	@include transition(all 0.3s 0.3s);
+}
+
+#intro-form, .popup_wrapper {
+	@include transition(all 0.3s ease-out);
+}
+
+#intro-form {
+	background: transparent url(../images/popup-bg.png) no-repeat;
+	background-size: 100%;
+	height: 644px;
+	width: 1000px;
+	padding: 45px 60px;
+  @include transform(translateX(0) translateY(-40%));
+
+	form {
+		@include clearfix();
+		height: 100%;
+		width: 100%;
+	}
+
+	fieldset {
+		border: 0 none;
+		margin: 0;
+		padding: 0;
+	}
+
+	button {
+		background-color: #A3CD83;
+		border: 0 none;
+		border-radius: 10px;
+		color: #FFFFFF;
+		float: right;
+		font-size: 30px;
+		padding: 20px 35px;
+
+    &:disabled {
+      background-color: #BDE79D;
+    }
+	}
+
+	.field {
+		float: left;
+		padding: 15px;
+		width: 50%;
+
+		label:after {
+			content: 'Required';
+			font-size: 10px;
+			position: absolute;
+			right: -45px;
+			top: 3px;
+		}
+
+		input, select{
+			border: 1px solid #5785AB;
+			border-radius: 3px;
+			color: #222222;
+			display: block;
+			font-size: 18px;
+			padding: 10px;
+			width: 100%;
+		}
+	}
+
+	.field-group {
+		clear: both;
+
+		&:last-child {
+			padding: 15px;
+
+			label {
+				font-size: 14px;
+
+				& > div {
+					border-radius: 2px;
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	label {
+		color: #5785AB;
+		font-size: 18px;
+		position: relative;
+	}
+
+	.selectric-wrapper {
+		.selectric {
+			background-color: $backgroundColor;
+			border-color: #5785AB;
+			border-radius: 3px;
+		}
+
+		.label, .selectric-items ul li {
+			background-color: $backgroundColor;
+			color: #222222;
+			font-size: 18px;
+		}
+
+		.selectric-items ul li {
+			&:hover {
+				background-color: #FAFAFA;
+			}
+		}
+	}
+}
+
+#first-block {
+	p {
+		color: #222222;
+		font-size: 27px;
+		margin-bottom: 35px;
+		text-align: center;
+
+		&:first-child {
+			margin-top: 40px;
+		}
+	}
+}
+
+#schoolroleother {
+	margin-top: 5px;
+}
+
+.schoolname {
+  position: relative;
+}
+
+#schoolnames {
+  border: 1px solid #C4C4C4;
+  display: none;
+  list-style: none;
+  max-height: 302px;
+  overflow: auto;
+  position: absolute;
+  width: 410px;
+  z-index: 1;
+
+  &.has-values {
+    display: block;
+  }
+
+  li {
+    background-color: $backgroundColor;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #EEE;
+    color: #222222;
+    cursor: pointer;
+    display: block;
+    font-size: 18px;
+    padding: 8px;
+
+    &:hover {
+      background-color: #FAFAFA;
+    }
+  }
+}
+
+input.error {
+  border-color: #E74C3C !important;
+}
+
+.popup_visible #intro-form {
+	@include transform(translateX(0) translateY(0));
 }

@@ -24,6 +24,11 @@
     "./vendors/selectivizr/selectivizr.js",
     "./vendors/reveal.js/js/reveal.js",
     "./vendors/reveal.js/lib/js/classList.js",
-    "./vendors/reveal.js/plugin/zoom-js/zoom.js"
+    "./vendors/reveal.js/plugin/zoom-js/zoom.js",
+    "./vendors/jquery-popup-overlay/jquery.popupoverlay.js",
+    "./vendors/jquery.cookie/jquery.cookie.js",
+    "./vendors/jquery-selectric/public/jquery.selectric.js",
+    "./vendors/iCheck/icheck.js",
+    "./vendors/jquery-debounce/jquery.debounce.js"
   ]
 }

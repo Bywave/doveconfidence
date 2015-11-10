@@ -8,6 +8,13 @@
     "normalize-css": "normalize.css#~3.0.3",
     "jquery": "~1.11.3",
     "console-polyfill": "~0.2.2",
-    "reveal.js": "~3.1.0"
+    "reveal.js": "~3.1.0",
+    "jquery-popup-overlay": "~1.6.0",
+    "jquery.cookie": "~1.4.1",
+    "bourbon": "~4.2.6",
+    "jquery-selectric": "~1.9.4",
+    "jquery-labelauty": "labelauty#~1.1.0",
+    "iCheck": "~1.0.2",
+    "jquery-debounce": "~1.0.6"
   }
 }

@@ -34,7 +34,11 @@ Reveal.addEventListener('slidechanged', function(event) {
 
   if (currentSlide.find('iframe[data-autoplay]').length > 0) {
     $('div.reveal').addClass('dark');
+
+    ga('send', 'event', 'Video', 'play', currentSlide.find('h1').text());
   }
+
+  ga('send', 'pageview', '/' + currentSlide.attr('id').replace(/#/, ''));
 });
 
 $id('show-second-block').on('click', function() {
@@ -194,9 +198,13 @@ $id('second-block')
         .done(function() {
           $.cookie('show_intro_form', '1', {expires: 0.5});
           $id('intro-form').popup('hide');
+
+          ga('send', 'event', 'Form', 'submit', 'Initial form');
         }); */
       $.cookie('show_intro_form', '1', {expires: 0.5});
       $id('intro-form').popup('hide');
+
+      ga('send', 'event', 'Form', 'submit', 'Initial form');
     }
 
     return false;

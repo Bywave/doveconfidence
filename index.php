@@ -1,3 +1,8 @@
+<?php
+
+$debug = !!preg_match('/\.local$/i', gethostname());
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -201,6 +206,7 @@
         </div>
       </section>
       <section id="page-8" class="slide line-bg-right">
+        <h1 style="display: none;">The Dove Self-Esteem Project: Photoshop Isn't Real Beauty</h1>
         <iframe data-autoplay src="https://www.youtube.com/embed/RX4N1WTLqjo?controls=0" frameborder="0" allowfullscreen></iframe>
       </section>
       <section id="page-9" class="slide line-bg">
@@ -306,6 +312,7 @@
         </div>
       </section>
       <section id="page-16" class="slide line-bg-right">
+        <h1 style="display: none;">Being Real About Beauty: Part 1</h1>
         <iframe data-autoplay src="https://www.youtube.com/embed/KbWytwYTZJM?controls=0" frameborder="0" allowfullscreen></iframe>
       </section>
       <section id="page-17" class="slide border-bg">
@@ -351,6 +358,7 @@
         </div>
       </section>
       <section id="page-21" class="slide line-bg-right">
+        <h1 style="display: none;">Mock-up Media #1</h1>
         <iframe data-autoplay src="https://www.youtube.com/embed/YE7VzlLtp-4?controls=0" frameborder="0" allowfullscreen></iframe>
       </section>
       <section id="page-22" class="slide border-bg">
@@ -419,6 +427,7 @@
         </div>
       </section>
       <section id="page-28" class="slide line-bg-right">
+        <h1 style="display: none;">The Dove Self-Esteem Project: Change One Thing</h1>
         <iframe data-autoplay src="https://www.youtube.com/embed/8PMzuo1KtRk?controls=0" frameborder="0" allowfullscreen></iframe>
       </section>
       <section id="page-29" class="slide line-bg-right">
@@ -489,6 +498,7 @@
         </div>
       </section>
       <section id="page-34" class="slide line-bg-right">
+        <h1 style="display: none;">Being Real About Beauty: Part 2</h1>
         <iframe data-autoplay src="https://www.youtube.com/embed/tKm3Nv2c3Wo?controls=0" frameborder="0" allowfullscreen></iframe>
       </section>
       <section id="page-35" class="slide green-bg">
@@ -589,17 +599,17 @@
     </div>
   </div>
 
-  <script src="js/vendors.js"></script>
-  <script src="js/application.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    })(window,document,'script','//www.google-analytics.com/analytics<?php echo $debug ? '_debug' : '' ?>.js','ga');
 
     ga('create', 'UA-69839782-1', 'auto');
     ga('send', 'pageview');
 
   </script>
+  <script src="js/vendors.js"></script>
+  <script src="js/application.js"></script>
 </body>
 </html>

@@ -46,6 +46,7 @@
 					<div class="field schoolname">
 						<label for="schoolname">Name of your school</label>
 						<input id="schoolname" type="text" name="schoolname" value="">
+            <input id="schoolname" type="text" name="schoolname" value="" autocomplete="off">
             <ul id="schoolnames"></ul>
 					</div>
 					<div class="field">

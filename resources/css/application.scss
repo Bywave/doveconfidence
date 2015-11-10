@@ -7,6 +7,8 @@
 @import './../vendors/jquery-selectric/public/selectric.css';
 @import 'checkbox';
 
+@include font-face('skinnycaps', './../font/skinnycaps');
+
 $backgroundColor: #fff;
 $mainColor: #222;
 $headingColor: #222;
@@ -231,4 +233,63 @@ input.error {
 
 .popup_visible #intro-form {
 	@include transform(translateX(0) translateY(0));
+}
+
+.interactive-1 {
+  position: relative;
+
+  .before, .after {
+    border: 4px solid #5785AB;
+    border-radius: 10px;
+    color: #5785AB;
+    padding: 12px 34px;
+    position: absolute;
+    @include transition(border-color 500ms ease, color 500ms ease);
+    top: 20%;
+  }
+
+  .before {
+    left: 104px;
+  }
+
+  .after {
+    right: 131px;
+  }
+
+  .drop-active {
+    border-color: #A3CD83;
+    color: #A3CD83;
+  }
+}
+
+.skinny {
+  font-family: skinnycaps, Helvetica, Arial, sans-serif !important;
+}
+
+.words {
+  color: #9B5FA3;
+  display: inline-block;
+  font-size: 100px !important;
+  position: absolute;
+  text-transform: uppercase;
+  @include transition(font-size 500ms ease);
+  white-space: nowrap;
+
+  &.minimize {
+    font-size: 30px !important;
+    @include transition(font-size 500ms ease, top 500ms ease, left 500ms ease);
+  }
+}
+
+.preload {
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+
+.ui-draggable {
+  cursor: move;
+
+  &.ui-draggable-disabled {
+    cursor: auto;
+  }
 }

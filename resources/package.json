@@ -29,6 +29,11 @@
     "./vendors/jquery.cookie/jquery.cookie.js",
     "./vendors/jquery-selectric/public/jquery.selectric.js",
     "./vendors/iCheck/icheck.js",
-    "./vendors/jquery-debounce/jquery.debounce.js"
+    "./vendors/jquery-debounce/jquery.debounce.js",
+    "./vendors/jquery-ui/ui/core.js",
+    "./vendors/jquery-ui/ui/widget.js",
+    "./vendors/jquery-ui/ui/mouse.js",
+    "./vendors/jquery-ui/ui/draggable.js",
+    "./vendors/jquery-ui/ui/droppable.js"
   ]
 }

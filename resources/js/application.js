@@ -106,26 +106,41 @@ $(document).on('click', function(event) {
   }
 });
 
+function escapeRegExp(string){
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 schoolname
   .on('input propertychange', $.debounce(function() {
     var keyword = $(this).val();
+
+    var schoolnamesArray = window.schoolnamesArray || [];
 
     schoolnames
       .removeClass('has-values')
       .html('');
 
     if (keyword) {
-      $
-        .get('schools.php', {s: keyword})
-        .done(function(response) {
-          if (response.length > 0) {
-            schoolnames.addClass('has-values');
+      keyword = escapeRegExp(keyword);
 
-            for (var i = 0; i < response.length; i++) {
-              schoolnames.append('<li>' + escapeHtml(response[i]) + '</li>');
-            };
-          }
-        });
+      var foundValues = [];
+
+      for (var i = 0; i < schoolnamesArray.length; i++) {
+        var name = schoolnamesArray[i].replace(/(\(|\))/g, '');
+        var pattern = new RegExp('^' + keyword + '|\\s' + keyword + '.*', 'ig');
+
+        if (pattern.test(name)) {
+          foundValues.push(schoolnamesArray[i]);
+        }
+      }
+
+      if (foundValues.length > 0) {
+        schoolnames.addClass('has-values');
+
+        for (var i = 0; i < foundValues.length; i++) {
+          schoolnames.append('<li>' + escapeHtml(foundValues[i]) + '</li>');
+        };
+      }
     }
   }, 500));
 
@@ -209,3 +224,62 @@ $id('second-block')
 
     return false;
   });
+
+var currentWord = 0;
+
+function showWord(index) {
+  if (index < window.timelineWordsArray.length) {
+    var data = window.timelineWordsArray[index];
+    var word = $('<div class="skinny words t-' + data.timeline + '" data-x="' + data.pos[0] + '" data-y="' + data.pos[1] + '" style="top: 9px;"></div>')
+      .text(data.words);
+
+    $('div.interactive-1').append(word);
+
+    word
+      .css('left', ($('div.interactive-1').outerWidth() / 2) - (word.outerWidth() / 2))
+      .hide()
+      .fadeIn()
+      .draggable();
+  }
+}
+
+function dropListener(event, ui) {
+  var x = parseInt(ui.draggable.data('x'), 10) - 50;
+  var y = parseInt(ui.draggable.data('y'), 10) - 50;
+
+  if (y > 360) {
+    y += 10;
+  } else {
+    y -= 10;
+  }
+
+  ui.draggable
+    .addClass('minimize')
+    .css('left', x)
+    .css('top', y)
+    .draggable('disable');
+
+  showWord(++currentWord);
+}
+
+$('.before.dropzone').droppable({
+  accept: '.t-before.words',
+  activeClass: 'drop-active',
+  hoverClass: 'drop-active',
+  tolerance: 'touch',
+  drop: dropListener
+});
+
+$('.after.dropzone').droppable({
+  accept: '.t-after.words',
+  activeClass: 'drop-active',
+  hoverClass: 'drop-active',
+  tolerance: 'touch',
+  drop: dropListener
+});
+
+$(window).load(function() {
+  $('div.preload').remove();
+
+  showWord(currentWord); // have to wait for the custom font to load
+});

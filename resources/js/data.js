@@ -1,71 +1,75 @@
 window.timelineWordsArray = [{
-    words: 'jerky prosciutto',
+    words: 'Agree photograph brief',
     timeline: 'before',
-    pos: [46, 400]
+    pos: [-30, 355]
   }, {
-    words: 'pastrami beef',
-    timeline: 'after',
-    pos: [635, 310]
-  }, {
-    words: 'spare ribs',
+    words: 'Choose photographer',
     timeline: 'before',
-    pos: [133, 477]
+    pos: [55, 425]
   }, {
-    words: 'tail landjaeger pig',
-    timeline: 'after',
-    pos: [672, 408]
-  }, {
-    words: 'pork loin',
+    words: 'Choose model',
     timeline: 'before',
-    pos: [183, 300]
+    pos: [125, 240]
   }, {
-    words: 'frankfurter',
-    timeline: 'after',
-    pos: [754, 456]
-  }, {
-    words: 'strip steak',
+    words: 'Choose wardrobe',
     timeline: 'before',
-    pos: [249, 423]
+    pos: [175, 375]
   }, {
-    words: 'biltong salami',
-    timeline: 'after',
-    pos: [780, 312]
-  }, {
-    words: 'drumstick',
+    words: 'Manicure and pedicure',
     timeline: 'before',
-    pos: [335, 326]
+    pos: [235, 260]
   }, {
-    words: 'chicken strip steak',
-    timeline: 'after',
-    pos: [856, 412]
-  }, {
-    words: 'pancetta kielbasa',
+    words: "Hair styling \n(colour, wash, blow dry)",
     timeline: 'before',
-    pos: [376, 464]
+    pos: [268, 415]
   }, {
-    words: 'filet mignon',
-    timeline: 'after',
-    pos: [889, 316]
-  }, {
-    words: 'hamburger',
+    words: 'Make up',
     timeline: 'before',
-    pos: [444, 286]
+    pos: [370, 220]
   }, {
-    words: 'turducken andouille',
-    timeline: 'after',
-    pos: [968, 250]
-  }, {
-    words: 't-bone brisket',
+    words: "Choose professional \nlighting",
     timeline: 'before',
-    pos: [490, 404]
+    pos: [380, 360]
   }, {
-    words: 'flank ham hock',
+    words: "Review all shots, \nselect one",
     timeline: 'after',
-    pos: [1000, 419]
+    pos: [515, 218]
   }, {
-    words: 'short ribs fatback',
+    words: 'Erase blemishes',
     timeline: 'after',
-    pos: [1048, 341]
+    pos: [550, 365]
+  }, {
+    words: "Correct hair and make \nit appear fuller",
+    timeline: 'after',
+    pos: [615, 410]
+  }, {
+    words: 'Even skin tone',
+    timeline: 'after',
+    pos: [650, 250]
+  }, {
+    words: 'Elongate neck',
+    timeline: 'after',
+    pos: [720, 370]
+  }, {
+    words: "Reduce facial \nwidth",
+    timeline: 'after',
+    pos: [745, 225]
+  }, {
+    words: "Enlarge \neyes",
+    timeline: 'after',
+    pos: [835, 200]
+  }, {
+    words: 'Lift eyebrows',
+    timeline: 'after',
+    pos: [850, 380]
+  }, {
+    words: 'Fill out lips',
+    timeline: 'after',
+    pos: [891, 255]
+  }, {
+    words: 'Whiten teeth',
+    timeline: 'after',
+    pos: [928, 355]
   }
 ];
 

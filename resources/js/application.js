@@ -227,11 +227,26 @@ $id('second-block')
 
 var currentWord = 0;
 
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return array;
+}
+
+window.timelineWordsArray = shuffleArray(window.timelineWordsArray);
+
 function showWord(index) {
   if (index < window.timelineWordsArray.length) {
     var data = window.timelineWordsArray[index];
-    var word = $('<div class="skinny words t-' + data.timeline + '" data-x="' + data.pos[0] + '" data-y="' + data.pos[1] + '" style="top: 9px;"></div>')
-      .text(data.words);
+    var words = data.words.replace(/\n/g, '<br>');
+
+    var word = $('<div class="skinny words" data-' + data.timeline + ' data-x="' + data.pos[0] + '" data-y="' + data.pos[1] + '" style="top: 15px;"></div>')
+      .html(words);
 
     $('div.interactive-1').append(word);
 
@@ -239,43 +254,66 @@ function showWord(index) {
       .css('left', ($('div.interactive-1').outerWidth() / 2) - (word.outerWidth() / 2))
       .hide()
       .fadeIn()
-      .draggable();
+      .draggable({
+        cursor: 'move'
+      });
   }
 }
 
-function dropListener(event, ui) {
-  var x = parseInt(ui.draggable.data('x'), 10) - 50;
-  var y = parseInt(ui.draggable.data('y'), 10) - 50;
+function dragListener(time) {
+  var _time = time;
 
-  if (y > 360) {
-    y += 10;
-  } else {
-    y -= 10;
-  }
+  return function(event, ui) {
+    if (ui.draggable.is('[data-' + _time + ']')) {
+      $(this).addClass('drop-active');
+    }
+  };
+}
 
-  ui.draggable
-    .addClass('minimize')
-    .css('left', x)
-    .css('top', y)
-    .draggable('disable');
+function dropListener(time) {
+  var _time = time;
 
-  showWord(++currentWord);
+  return function(event, ui) {
+    if (!ui.draggable.is('[data-' + _time + ']')) {
+      ga('send', 'event', 'Timeline', 'incorrect', ui.draggable.html().replace(/<br>/g, ''));
+      return;
+    }
+
+    ga('send', 'event', 'Timeline', 'correct', ui.draggable.html().replace(/<br>/g, ''));
+
+    var x = parseInt(ui.draggable.data('x'), 10);
+    var y = parseInt(ui.draggable.data('y'), 10);
+
+    ui.draggable
+      .addClass('minimize')
+      .css('left', x)
+      .css('top', y)
+      .draggable('disable');
+
+    showWord(++currentWord);
+
+    $(this).removeClass('drop-active');
+  };
 }
 
 $('.before.dropzone').droppable({
-  accept: '.t-before.words',
-  activeClass: 'drop-active',
-  hoverClass: 'drop-active',
+  accept: '.words',
+  over: dragListener('before'),
+  out: function(event, ui) {
+    $(this).removeClass('drop-active');
+  },
   tolerance: 'touch',
-  drop: dropListener
+  drop: dropListener('before')
 });
 
 $('.after.dropzone').droppable({
-  accept: '.t-after.words',
-  activeClass: 'drop-active',
-  hoverClass: 'drop-active',
+  accept: '.words',
+  over: dragListener('after'),
+  out: function(event, ui) {
+    $(this).removeClass('drop-active');
+  },
   tolerance: 'touch',
-  drop: dropListener
+  drop: dropListener('after')
 });
 
 $(window).load(function() {

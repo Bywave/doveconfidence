@@ -242,10 +242,12 @@ input.error {
     border: 4px solid #5785AB;
     border-radius: 10px;
     color: #5785AB;
+    height: 79px;
     padding: 12px 34px;
     position: absolute;
     @include transition(border-color 500ms ease, color 500ms ease);
     top: 20%;
+    width: 96px;
   }
 
   .before {
@@ -267,29 +269,32 @@ input.error {
 }
 
 .words {
+  @include clearfix();
   color: #9B5FA3;
   display: inline-block;
   font-size: 100px !important;
+  letter-spacing: -10px;
   position: absolute;
   text-transform: uppercase;
-  @include transition(font-size 500ms ease);
+  @include transition(font-size 500ms ease, letter-spacing 500ms ease);
   white-space: nowrap;
 
+  br {
+    display: none;
+  }
+
   &.minimize {
-    font-size: 30px !important;
-    @include transition(font-size 500ms ease, top 500ms ease, left 500ms ease);
+    font-size: 20px !important;
+    letter-spacing: 0;
+    @include transition(font-size 500ms ease, letter-spacing 500ms ease, top 500ms ease, left 500ms ease);
+
+    br {
+      display: block;
+    }
   }
 }
 
 .preload {
   left: 50%;
-  @include transform(translateX(-50%));
-}
-
-.ui-draggable {
-  cursor: move;
-
-  &.ui-draggable-disabled {
-    cursor: auto;
-  }
+  @include transform(translateX(-100%));
 }

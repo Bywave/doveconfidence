@@ -3,6 +3,8 @@ var $id = function(id) {
   return $(document.getElementById(id));
 };
 
+var currentWord = 0;
+
 Reveal.initialize({
   controls: true,
   progress: true,
@@ -36,6 +38,11 @@ Reveal.addEventListener('slidechanged', function(event) {
     $('div.reveal').addClass('dark');
 
     ga('send', 'event', 'Video', 'play', currentSlide.find('h1').text());
+  }
+
+  if (currentSlide.find('div.interactive-1').length > 0 && (currentWord === 0 && currentSlide.find('div.skinny:not(.preload)').length < 1)) {
+    $('div.preload').remove();
+    showWord(currentWord);
   }
 
   ga('send', 'pageview', '/' + currentSlide.attr('id').replace(/#/, ''));
@@ -225,8 +232,6 @@ $id('second-block')
     return false;
   });
 
-var currentWord = 0;
-
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -317,7 +322,8 @@ $('.after.dropzone').droppable({
 });
 
 $(window).load(function() {
-  $('div.preload').remove();
-
-  showWord(currentWord); // have to wait for the custom font to load
+  if (!!(window.location + '').match(/page-10/)) {
+    $('div.preload').remove();
+    showWord(currentWord); // have to wait for the custom font to load
+  }
 });

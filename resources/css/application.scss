@@ -381,3 +381,31 @@ input.error {
     }
   }
 }
+
+.interactive-3 {
+  ul {
+    list-style: none !important;
+
+    li {
+      cursor: pointer;
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      position: relative;
+
+      &:before {
+        background: url(../images/checkbox.png) no-repeat;
+        content: '';
+        height: 24px;
+        left: -35px;
+        position: absolute;
+        top: 2px;
+        width: 23px;
+      }
+
+      &.checked:before {
+        content: '\2713';
+      }
+    }
+  }
+}

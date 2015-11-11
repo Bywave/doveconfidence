@@ -337,3 +337,12 @@ $('.box button').on('click', function() {
     .end()
     .remove();
 });
+
+$('div.interactive-3 li').on('click', function() {
+  $('div.interactive-3 li').removeClass('checked');
+  $(this).addClass('checked');
+
+  setTimeout(function() {
+    Reveal.next();
+  }, 250);
+});

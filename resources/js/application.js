@@ -327,3 +327,13 @@ $(window).load(function() {
     showWord(currentWord); // have to wait for the custom font to load
   }
 });
+
+$('.box button').on('click', function() {
+  ga('send', 'event', 'Button', 'click', $(this).attr('name'));
+
+  $(this)
+    .next()
+      .show()
+    .end()
+    .remove();
+});

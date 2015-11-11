@@ -239,6 +239,7 @@ input.error {
   position: relative;
 
   .before, .after {
+    background-color: transparent;
     border: 4px solid #5785AB;
     border-radius: 10px;
     color: #5785AB;
@@ -297,4 +298,86 @@ input.error {
 .preload {
   left: 50%;
   @include transform(translateX(-100%));
+}
+
+.interactive-2 {
+  button {
+    background-color: transparent;
+    border: 4px solid #5785AB;
+    border-radius: 10px;
+    bottom: 70px;
+    color: #5785AB;
+    height: 79px;
+    left: 50%;
+    margin: auto;
+    padding: 12px 34px;
+    position: absolute;
+    @include transform(translateX(-50%));
+    width: 96px;
+  }
+
+  .comment-box {
+    height: 100%;
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      height: 0;
+      left: 50%;
+      position: absolute;
+      @include transform(translateX(-50%));
+      width: 0;
+      z-index: 1;
+    }
+
+    &:after {
+      bottom: 38px;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #FFF;
+    }
+
+    &:before {
+      bottom: 30px;
+      border-left: 27px solid transparent;
+      border-right: 27px solid transparent;
+      border-top: 27px solid #5785AB;
+    }
+  }
+
+  textarea {
+    border: 7px solid #5785AB;
+    border-radius: 10px;
+    bottom: 50px;
+    color: #555;
+    font-size: 25px !important;
+    height: 300px;
+    left: 50%;
+    position: absolute;
+    resize: none;
+    @include transform(translateX(-50%));
+    width: 70%;
+  }
+
+  .box {
+    float: left;
+    height: 100%;
+    position: relative;
+
+    &.box-1 {
+      width: 210px;
+    }
+
+    &.box-2 {
+      width: 332px;
+    }
+
+    &.box-3 {
+      width: 239px;
+    }
+
+    &.box-4 {
+      width: 276px;
+    }
+  }
 }

@@ -4,6 +4,8 @@ var $id = function(id) {
 };
 
 var currentWord = 0;
+var windowIsLoaded = false;
+var _canvas = null;
 
 Reveal.initialize({
   controls: true,
@@ -43,6 +45,10 @@ Reveal.addEventListener('slidechanged', function(event) {
   if (currentSlide.find('div.interactive-1').length > 0 && (currentWord === 0 && currentSlide.find('div.skinny:not(.preload)').length < 1)) {
     $('div.preload').remove();
     showWord(currentWord);
+  }
+
+  if (currentSlide.find('div.interactive-4').length > 0) {
+    _canvas = initializeCanvas();
   }
 
   ga('send', 'pageview', '/' + currentSlide.attr('id').replace(/#/, ''));
@@ -322,6 +328,8 @@ $('.after.dropzone').droppable({
 });
 
 $(window).load(function() {
+  windowIsLoaded = true;
+
   if (!!(window.location + '').match(/page-10/)) {
     $('div.preload').remove();
     showWord(currentWord); // have to wait for the custom font to load
@@ -342,7 +350,216 @@ $('div.interactive-3 li').on('click', function() {
   $('div.interactive-3 li').removeClass('checked');
   $(this).addClass('checked');
 
+  ga('send', 'event', 'Pledge', 'select', $(this).text());
+
   setTimeout(function() {
     Reveal.next();
   }, 250);
+});
+
+$id('download-pledge').on('click', function() {
+  ga('send', 'event', 'Button', 'click', 'Download this pledge');
+});
+
+$id('create-new-pledge').on('click', function() {
+  ga('send', 'event', 'Button', 'click', 'Create another pledge');
+  Reveal.prev();
+});
+
+fabric.IText.prototype._renderCharDecoration = function(ctx, styleDeclaration, left, top, offset, charWidth, charHeight) {
+  var textDecoration = styleDeclaration
+        ? (styleDeclaration.textDecoration || this.textDecoration)
+        : this.textDecoration;
+
+  if (!textDecoration) {
+    return;
+  }
+
+  if (textDecoration.indexOf('underline') > -1) {
+    ctx.fillRect(
+      left,
+      top + charHeight / 10,
+      charWidth,
+      1
+    );
+  }
+  if (textDecoration.indexOf('line-through') > -1) {
+    ctx.fillRect(
+      left,
+      top - charHeight * (this._fontSizeFraction + this._fontSizeMult - 1) + charHeight / 15,
+      charWidth,
+      charHeight / 15
+    );
+  }
+  if (textDecoration.indexOf('overline') > -1) {
+    ctx.fillRect(
+      left,
+      top - (this._fontSizeMult - this._fontSizeFraction) * charHeight,
+      charWidth,
+      charHeight / 15
+    );
+  }
+};
+
+function initializeCanvas() {
+  var canvas = new fabric.StaticCanvas('certificate');
+  var width = canvas.getWidth() - 5;
+  var height = canvas.getHeight() - 5;
+
+  canvas.add(new fabric.Rect({
+    top: 0,
+    left: 0,
+    width: width,
+    height: height,
+    fill: '',
+    strokeWidth: 5,
+    stroke: '#7DB2DB',
+    rx: 40,
+    ry: 40
+  }));
+
+  canvas.add(new fabric.Rect({
+    top: 5,
+    left: 5,
+    width: width - 5,
+    height: height - 5,
+    fill: '#FFF',
+    opacity: 0.4,
+    rx: 38,
+    ry: 38
+  }));
+
+  fabric.Image.fromURL('images/dove-logo2.png', function(img) {
+    img
+      .setLeft(50)
+      .setTop(50)
+      .setWidth(181)
+      .setHeight(123);
+
+    canvas.add(img);
+  });
+
+  if (!windowIsLoaded) {
+    $(window).load(function() {
+      addTextToCanvas(canvas, width, height);
+    });
+  } else {
+    addTextToCanvas(canvas, width, height);
+  }
+
+  return canvas;
+}
+
+function repeat(str, chr){
+  chr = chr || 1;
+  return Array(chr).join(str);
+}
+
+function addTextToCanvas(canvas, width, height) {
+  var text = '';
+
+  if ($('div.interactive-3 li.checked').length < 1) {
+    text = $('div.interactive-3 li:eq(0)').text();
+  } else {
+    text = $('div.interactive-3 li.checked').text();
+  }
+
+  var tokens = ('"" ' + text.toUpperCase()).split(' ');
+  var lines = [];
+  var lineLimit = 40;
+  var lineText = '';
+
+  for (var i = 0; i < tokens.length; i++) {
+    if (lineText !== '') {
+      if ((lineText + ' ' + tokens[i]).length > lineLimit) {
+        lines.push(lineText);
+        lineText = tokens[i];
+      } else {
+        lineText += ' ' + tokens[i];
+      }
+    } else {
+      lineText = tokens[i];
+    }
+  }
+
+  lines.push(lineText);
+
+  var addUnderline = false;
+
+  for (var i = 0; i < lines.length; i++) {
+    var styles = {0: {}};
+
+    if (lines[i].match(/"/)) {
+      var _tokens = lines[i].split('');
+
+      for (var _i = 0; _i < _tokens.length; _i++) {
+        if (_tokens[_i] === '"') {
+          if (addUnderline === false) {
+            styles[0][_i] = {
+              textDecoration: 'underline'
+            };
+
+            addUnderline = true;
+          } else if (addUnderline === true) {
+            styles[0][_i] = {
+              textDecoration: 'underline'
+            };
+
+            addUnderline = false;
+          }
+        } else if (addUnderline) {
+          styles[0][_i] = {
+            textDecoration: 'underline'
+          };
+        }
+      }
+    }
+
+    var _text = new fabric.IText(lines[i], {
+      fontFamily: 'skinnycaps',
+      fontSize: 80,
+      left: 100,
+      top: 200 + (60 * i),
+      width: width - 120,
+      styles: styles
+    });
+
+    canvas.add(_text);
+
+    _text.centerH();
+  }
+
+  canvas.add(new fabric.Text('Signed ' + repeat(' ', 11) + ' Date ' + $.format.date($.now(), 'MMMM d, yyyy'), {
+    fontFamily: 'skinnycaps',
+    fontSize: 80,
+    top: height - 100,
+    left: 90
+  }));
+
+  canvas.add(new fabric.Line([10, height - 28, 270, height - 28], {
+    left: 230,
+    top: height - 27,
+    stroke: '#000'
+  }));
+
+  canvas.add(new fabric.Line([10, height - 28, 385, height - 28], {
+    left: 623,
+    top: height - 27,
+    stroke: '#000'
+  }));
+}
+
+_canvas = initializeCanvas();
+
+function downloadPledge(){
+  if (_canvas !== null) {
+    $('<a>').attr({
+      href: _canvas.toDataURL(),
+      download: 'certificate.png'
+    })[0].click();
+  }
+}
+
+$id('download-pledge').on('click', function() {
+  downloadPledge();
 });

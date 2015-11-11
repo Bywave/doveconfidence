@@ -64,7 +64,7 @@
             <input id="schoolroleother" type="text" name="schoolroleother" value="" style="display: none;">
           </div>
           <div class="field">
-            <label for="email">Your email address</label>
+            <label class="email" for="email">Your email address</label>
             <input id="email" type="email" name="email" placeholder="name@domain.edu.au" value="">
           </div>
         </div>
@@ -610,11 +610,17 @@
       </section>
       <section id="page-41" class="slide">
         <div class="container">
-          <div class="dove-logo"></div>
           <div class="badge"></div>
-          <div class="image-1"></div>
-          <div class="image-2"></div>
-          <div class="image-3"></div>
+          <div class="interactive-4">
+            <div class="wrapper">
+              <div class="skinny">&nbsp;</div>
+              <canvas id="certificate" width="1103" height="690"></canvas>
+              <div class="buttons">
+                <button id="download-pledge">Download this pledge</button>
+                <button id="create-new-pledge">Create another pledge</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section id="page-42" class="slide">
@@ -633,7 +639,7 @@
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics_debug.js','ga');
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-69839782-1', 'auto');
     ga('send', 'pageview');

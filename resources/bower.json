@@ -16,6 +16,8 @@
     "jquery-labelauty": "labelauty#~1.1.0",
     "iCheck": "~1.0.2",
     "jquery-debounce": "~1.0.6",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "fabric.js": "fabric#~1.5.0",
+    "jquery-dateFormat": "~1.0.2"
   }
 }

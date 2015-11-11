@@ -34,6 +34,8 @@
     "./vendors/jquery-ui/ui/widget.js",
     "./vendors/jquery-ui/ui/mouse.js",
     "./vendors/jquery-ui/ui/draggable.js",
-    "./vendors/jquery-ui/ui/droppable.js"
+    "./vendors/jquery-ui/ui/droppable.js",
+    "./vendors/fabric.js/dist/fabric.js",
+    "./vendors/jquery-dateFormat/dist/jquery-dateFormat.js"
   ]
 }

@@ -121,6 +121,11 @@ section.has-dark-background {
 			top: 3px;
 		}
 
+    label.email:after {
+      content: 'Required, Must contain ".edu.au"';
+      right: -151px;
+    }
+
 		input, select{
 			border: 1px solid #5785AB;
 			border-radius: 3px;
@@ -406,6 +411,50 @@ input.error {
       &.checked:before {
         content: '\2713';
       }
+    }
+  }
+}
+
+.interactive-4 {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .wrapper {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  .skinny {
+    height: 1px;
+  }
+
+  canvas {
+    margin-top: 50px;
+  }
+
+  .buttons {
+    bottom: 25px;
+    left: 50%;
+    position: absolute;
+    @include transform(translateX(-50%));
+    width: 100%;
+  }
+
+  button {
+    background-color: #A3CD83;
+    border: 0 none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    display: inline;
+    font-size: 30px;
+    padding: 10px 35px;
+
+    &:first-child {
+      margin-right: 200px;
     }
   }
 }

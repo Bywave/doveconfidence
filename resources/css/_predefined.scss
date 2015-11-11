@@ -1570,7 +1570,7 @@ html, body {
 }
 
 #page-41 .container {
-    background: url(../images/page36/body-bg.jpg) 0 0 no-repeat;
+    background: url(../images/page36/body-bg.png) 0 0 no-repeat;
     background-size: 1200px 853px;
 }
 
@@ -1582,6 +1582,7 @@ html, body {
     position: absolute;
     right: -200px;
     top: -5px;
+    z-index: 1;
 }
 
 #page-41 .image-1 {

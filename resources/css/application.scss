@@ -29,6 +29,11 @@ $heading4Size: 1.0em;
 
 @import './../vendors/reveal.js/css/theme/template/theme';
 
+.smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 section.has-dark-background {
 	&, h1, h2, h3, h4, h5, h6 {
 		color: #fff;
@@ -70,7 +75,7 @@ section.has-dark-background {
 	@include transition(all 0.3s 0.3s);
 }
 
-#intro-form, .popup_wrapper {
+#intro-form, #pledge-name-form, .popup_wrapper {
 	@include transition(all 0.3s ease-out);
 }
 
@@ -163,7 +168,7 @@ section.has-dark-background {
 	.selectric-wrapper {
 		.selectric {
 			background-color: $backgroundColor;
-			border-color: #5785AB;
+			border-color: #7DB2DB;
 			border-radius: 3px;
 		}
 
@@ -236,8 +241,53 @@ input.error {
   border-color: #E74C3C !important;
 }
 
-.popup_visible #intro-form {
-	@include transform(translateX(0) translateY(0));
+.popup_visible {
+  #intro-form, #pledge-name-form {
+    @include transform(translateX(0) translateY(0));
+  }
+}
+
+#pledge-name-form {
+  background-color: #FFF;
+  border-radius: 10px;
+  border: 5px solid #333;
+  padding: 15px;
+
+  label {
+    float: left;
+    margin-right: 10px;
+    width: 180px;
+  }
+
+  input {
+    border: 0 none;
+    border-bottom: 1px solid #333;
+    font-weight: normal !important;
+    outline: 0;
+  }
+
+  div {
+    clear: both;
+    margin: 5px 0;
+  }
+
+  label, input, div {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  button {
+    background-color: #A3CD83;
+    border: 0 none;
+    border-radius: 10px;
+    color: #333;
+    display: inline;
+    float: right;
+    font-size: 22px;
+    margin-top: 10px;
+    padding: 10px 35px;
+  }
 }
 
 .interactive-1 {
@@ -245,9 +295,9 @@ input.error {
 
   .before, .after {
     background-color: transparent;
-    border: 4px solid #5785AB;
+    border: 4px solid #7DB2DB;
     border-radius: 10px;
-    color: #5785AB;
+    color: #7DB2DB;
     height: 79px;
     padding: 12px 34px;
     position: absolute;
@@ -308,10 +358,10 @@ input.error {
 .interactive-2 {
   button {
     background-color: transparent;
-    border: 4px solid #5785AB;
+    border: 4px solid #7DB2DB;
     border-radius: 10px;
     bottom: 70px;
-    color: #5785AB;
+    color: #7DB2DB;
     height: 79px;
     left: 50%;
     margin: auto;
@@ -346,18 +396,20 @@ input.error {
       bottom: 30px;
       border-left: 27px solid transparent;
       border-right: 27px solid transparent;
-      border-top: 27px solid #5785AB;
+      border-top: 27px solid #7DB2DB;
     }
   }
 
   textarea {
-    border: 7px solid #5785AB;
-    border-radius: 10px;
+    border: 7px solid #7DB2DB;
+    border-radius: 20px;
     bottom: 50px;
     color: #555;
-    font-size: 25px !important;
+    font-size: 23px !important;
     height: 300px;
     left: 50%;
+    outline: 0;
+    padding: 5px;
     position: absolute;
     resize: none;
     @include transform(translateX(-50%));
@@ -371,6 +423,22 @@ input.error {
 
     &.box-1 {
       width: 210px;
+
+      button {
+        @include transform(translateX(-72%));
+      }
+
+      textarea {
+        @include transform(translateX(-65%));
+      }
+
+      .comment-box:before {
+        @include transform(translateX(-95%));
+      }
+
+      .comment-box:after {
+        @include transform(translateX(-110%));
+      }
     }
 
     &.box-2 {
@@ -383,6 +451,22 @@ input.error {
 
     &.box-4 {
       width: 276px;
+
+      button {
+        @include transform(translateX(-35%));
+      }
+
+      textarea {
+        @include transform(translateX(-40%));
+      }
+
+      .comment-box:before {
+        @include transform(translateX(-20%));
+      }
+
+      .comment-box:after {
+        @include transform(translateX(-8%));
+      }
     }
   }
 }
@@ -433,7 +517,8 @@ input.error {
   }
 
   canvas {
-    margin-top: 50px;
+    border-radius: 40px;
+    margin: 50px 0 0 50px;
   }
 
   .buttons {

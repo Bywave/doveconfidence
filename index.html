@@ -9,7 +9,7 @@
   <link href="css/application.css" media="screen, projection" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div id="intro-form" style="display: none;">
+  <div id="intro-form" class="smooth" style="display: none;">
     <div id="first-block">
       <p>Welcome to the interactive version of the <br>Confident Me workshop.</p>
       <p>If you are here as part of your class preparation, we recommend that in the first instance you download and review the teacher's guide and the pdf copy of the Confident Me workshop.<br>
@@ -17,7 +17,7 @@
       <p>When you are ready to teach the Confident Me workshop in your classroom, please proceed to the next page and complete the simple registration process.</p>
       <button id="show-second-block">NEXT ></button>
     </div>
-    <form id="second-block" style="display: none;">
+    <form id="second-block" style="display: none;" autocomplete="off">
       <fieldset>
         <div class="field-group">
           <div class="field">
@@ -45,7 +45,7 @@
         <div class="field-group">
           <div class="field schoolname">
             <label for="schoolname">Name of your school</label>
-            <input id="schoolname" type="text" name="schoolname" value="" autocomplete="off">
+            <input id="schoolname" type="text" name="schoolname" value="">
             <ul id="schoolnames"></ul>
           </div>
           <div class="field">
@@ -79,6 +79,16 @@
           <button id="submit-intro-form" disabled>START</button>
         </div>
       </fieldset>
+    </form>
+  </div>
+  <div id="pledge-name-form" class="smooth" style="display: none;">
+    <form autocomplete="off">
+      <label for="student-name">Student Name:</label>
+      <input id="student-name" type="text" name="student-name" value="">
+      <div>or</div>
+      <label for="class-name">Class Name:</label>
+      <input id="class-name" type="text" name="class-name" value="">
+      <button id="enter-pledge-name">ENTER</button>
     </form>
   </div>
   <div class="reveal">
@@ -508,7 +518,7 @@
           </div>
         </div>
       </section>
-      <section id="page-36" class="slide border-bg">
+      <section id="page-36" class="slide border-bg smooth">
         <div class="container">
           <div class="image-1"></div>
           <div class="image-3 interactive-2">
@@ -585,7 +595,7 @@
           </div>
         </div>
       </section>
-      <section id="page-40" class="slide line-bg2">
+      <section id="page-40" class="slide line-bg2 smooth">
         <div class="container">
           <div class="top-content header-7">
             <div class="top-content-inner">
@@ -616,8 +626,8 @@
               <div class="skinny">&nbsp;</div>
               <canvas id="certificate" width="1103" height="690"></canvas>
               <div class="buttons">
-                <button id="download-pledge">Download this pledge</button>
-                <button id="create-new-pledge">Create another pledge</button>
+                <button id="download-pledge" style="display: none;">Download this pledge</button>
+                <button id="create-new-pledge" style="display: none;">Create another pledge</button>
               </div>
             </div>
           </div>

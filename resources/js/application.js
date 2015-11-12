@@ -6,6 +6,7 @@ var $id = function(id) {
 var currentWord = 0;
 var windowIsLoaded = false;
 var _canvas = null;
+var nameOnCertificate = '';
 
 Reveal.initialize({
   controls: true,
@@ -36,6 +37,10 @@ Reveal.addEventListener('slidechanged', function(event) {
     $('div.reveal').removeClass('dark');
   }
 
+  if (previousSlide.find('div.interactive-3').length > 0) {
+    $id('pledge-name-form').popup('hide');
+  }
+
   if (currentSlide.find('iframe[data-autoplay]').length > 0) {
     $('div.reveal').addClass('dark');
 
@@ -47,7 +52,7 @@ Reveal.addEventListener('slidechanged', function(event) {
     showWord(currentWord);
   }
 
-  if (currentSlide.find('div.interactive-4').length > 0) {
+  if (currentSlide.find('div.interactive-4').length > 0 && nameOnCertificate !== '') {
     _canvas = initializeCanvas();
   }
 
@@ -352,9 +357,19 @@ $('div.interactive-3 li').on('click', function() {
 
   ga('send', 'event', 'Pledge', 'select', $(this).text());
 
-  setTimeout(function() {
+  $id('pledge-name-form').popup('show');
+});
+
+$id('enter-pledge-name').on('click', function() {
+  var studentName = $id('student-name').val();
+  var className = $id('class-name').val();
+
+  if (studentName || className) {
+    nameOnCertificate = studentName || className;
     Reveal.next();
-  }, 250);
+  }
+
+  return false;
 });
 
 $id('download-pledge').on('click', function() {
@@ -363,6 +378,9 @@ $id('download-pledge').on('click', function() {
 
 $id('create-new-pledge').on('click', function() {
   ga('send', 'event', 'Button', 'click', 'Create another pledge');
+
+  nameOnCertificate = '';
+
   Reveal.prev();
 });
 
@@ -402,50 +420,93 @@ fabric.IText.prototype._renderCharDecoration = function(ctx, styleDeclaration, l
 };
 
 function initializeCanvas() {
-  var canvas = new fabric.StaticCanvas('certificate');
+  var canvas = new fabric.Canvas('certificate', {
+    isDrawingMode: true
+  });
+
   var width = canvas.getWidth() - 5;
   var height = canvas.getHeight() - 5;
 
-  canvas.add(new fabric.Rect({
-    top: 0,
-    left: 0,
-    width: width,
-    height: height,
-    fill: '',
-    strokeWidth: 5,
-    stroke: '#7DB2DB',
-    rx: 40,
-    ry: 40
-  }));
+  fabric.Image.fromURL('images/page36/certificate-bg.png', function(img) {
+    img.set({
+      top: 0,
+      left: 0,
+      width: width,
+      height: height,
+      clipTo: function(ctx) {
+        var x = -((width / 2) - 1);
+        var y = -((height / 2) - 1);
+        var w = width;
+        var h = height;
+        var r = 40;
+
+        if (w < 2 * r) {
+          r = w / 2;
+        }
+
+        if (h < 2 * r) {
+          r = h / 2;
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+      }
+    });
+
+    canvas.add(img);
+
+    img.sendToBack();
+  });
 
   canvas.add(new fabric.Rect({
-    top: 5,
-    left: 5,
-    width: width - 5,
-    height: height - 5,
-    fill: '#FFF',
-    opacity: 0.4,
-    rx: 38,
-    ry: 38
-  }));
+      top: 0,
+      left: 0,
+      width: width,
+      height: height,
+      fill: '',
+      strokeWidth: 5,
+      stroke: '#7DB2DB',
+      rx: 40,
+      ry: 40
+    }));
+
+    canvas.add(new fabric.Rect({
+      top: 5,
+      left: 5,
+      width: width - 5,
+      height: height - 5,
+      fill: '#FFF',
+      opacity: 0.4,
+      rx: 38,
+      ry: 38
+    }));
 
   fabric.Image.fromURL('images/dove-logo2.png', function(img) {
-    img
-      .setLeft(50)
-      .setTop(50)
-      .setWidth(181)
-      .setHeight(123);
+    img.set({
+      top: 50,
+      left: 50,
+      width: 181,
+      height: 123
+    });
 
     canvas.add(img);
   });
 
   if (!windowIsLoaded) {
     $(window).load(function() {
-      addTextToCanvas(canvas, width, height);
+      addDetailsToCanvas(canvas, width, height);
     });
   } else {
-    addTextToCanvas(canvas, width, height);
+    addDetailsToCanvas(canvas, width, height);
   }
+
+  $id('download-pledge').show();
+  $id('create-new-pledge').show();
 
   return canvas;
 }
@@ -455,7 +516,7 @@ function repeat(str, chr){
   return Array(chr).join(str);
 }
 
-function addTextToCanvas(canvas, width, height) {
+function addDetailsToCanvas(canvas, width, height) {
   var text = '';
 
   if ($('div.interactive-3 li.checked').length < 1) {
@@ -464,7 +525,7 @@ function addTextToCanvas(canvas, width, height) {
     text = $('div.interactive-3 li.checked').text();
   }
 
-  var tokens = ('"" ' + text.toUpperCase()).split(' ');
+  var tokens = ('"' + nameOnCertificate + '" ' + text.toUpperCase()).split(' ');
   var lines = [];
   var lineLimit = 40;
   var lineText = '';
@@ -495,16 +556,8 @@ function addTextToCanvas(canvas, width, height) {
       for (var _i = 0; _i < _tokens.length; _i++) {
         if (_tokens[_i] === '"') {
           if (addUnderline === false) {
-            styles[0][_i] = {
-              textDecoration: 'underline'
-            };
-
             addUnderline = true;
           } else if (addUnderline === true) {
-            styles[0][_i] = {
-              textDecoration: 'underline'
-            };
-
             addUnderline = false;
           }
         } else if (addUnderline) {
@@ -520,8 +573,7 @@ function addTextToCanvas(canvas, width, height) {
       fontSize: 80,
       left: 100,
       top: 200 + (60 * i),
-      width: width - 120,
-      styles: styles
+      width: width - 120
     });
 
     canvas.add(_text);
@@ -539,17 +591,17 @@ function addTextToCanvas(canvas, width, height) {
   canvas.add(new fabric.Line([10, height - 28, 270, height - 28], {
     left: 230,
     top: height - 27,
-    stroke: '#000'
+    stroke: '#000',
+    strokeWidth: 2
   }));
 
   canvas.add(new fabric.Line([10, height - 28, 385, height - 28], {
-    left: 623,
+    left: 628,
     top: height - 27,
-    stroke: '#000'
+    stroke: '#000',
+    strokeWidth: 2
   }));
 }
-
-_canvas = initializeCanvas();
 
 function downloadPledge(){
   if (_canvas !== null) {
@@ -563,3 +615,5 @@ function downloadPledge(){
 $id('download-pledge').on('click', function() {
   downloadPledge();
 });
+
+

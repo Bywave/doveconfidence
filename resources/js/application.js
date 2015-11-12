@@ -366,14 +366,13 @@ $id('enter-pledge-name').on('click', function() {
 
   if (studentName || className) {
     nameOnCertificate = studentName || className;
+
+    ga('send', 'event', 'Form', 'enter-pledge-name', nameOnCertificate);
+
     Reveal.next();
   }
 
   return false;
-});
-
-$id('download-pledge').on('click', function() {
-  ga('send', 'event', 'Button', 'click', 'Download this pledge');
 });
 
 $id('create-new-pledge').on('click', function() {
@@ -609,6 +608,8 @@ function downloadPledge(){
       href: _canvas.toDataURL(),
       download: 'certificate.png'
     })[0].click();
+
+    ga('send', 'event', 'Button', 'click', 'Download this pledge');
   }
 }
 

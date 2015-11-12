@@ -383,40 +383,142 @@ $id('create-new-pledge').on('click', function() {
   Reveal.prev();
 });
 
-fabric.IText.prototype._renderCharDecoration = function(ctx, styleDeclaration, left, top, offset, charWidth, charHeight) {
-  var textDecoration = styleDeclaration
-        ? (styleDeclaration.textDecoration || this.textDecoration)
-        : this.textDecoration;
+(function() {
+  var unknown = 'unknown';
 
-  if (!textDecoration) {
-    return;
+  function getPointer(event, upperCanvasEl) {
+    event || (event = fabric.window.event);
+
+    var element = event.target ||
+                  (typeof event.srcElement !== unknown ? event.srcElement : null),
+
+        scroll = fabric.util.getScrollLeftTop(element, upperCanvasEl);
+
+    var scale = parseFloat($('div.slides').css('zoom'));
+
+    var x = pointerX(event) + scroll.left;
+    var y = pointerY(event) + scroll.top;
+
+    x = x / scale;
+    y = y / scale;
+
+    return {
+      x: x,
+      y: y
+    };
   }
 
-  if (textDecoration.indexOf('underline') > -1) {
-    ctx.fillRect(
-      left,
-      top + charHeight / 10,
-      charWidth,
-      1
-    );
+  var pointerX = function(event) {
+    // looks like in IE (<9) clientX at certain point (apparently when mouseup fires on VML element)
+    // is represented as COM object, with all the consequences, like "unknown" type and error on [[Get]]
+    // need to investigate later
+    return (typeof event.clientX !== unknown ? event.clientX : 0);
+  },
+
+  pointerY = function(event) {
+    return (typeof event.clientY !== unknown ? event.clientY : 0);
+  };
+
+  function _getPointer(event, pageProp, clientProp) {
+    var touchProp = event.type === 'touchend' ? 'changedTouches' : 'touches';
+
+    return (event[touchProp] && event[touchProp][0]
+      ? (event[touchProp][0][pageProp] - (event[touchProp][0][pageProp] - event[touchProp][0][clientProp]))
+        || event[clientProp]
+      : event[clientProp]);
   }
-  if (textDecoration.indexOf('line-through') > -1) {
-    ctx.fillRect(
-      left,
-      top - charHeight * (this._fontSizeFraction + this._fontSizeMult - 1) + charHeight / 15,
-      charWidth,
-      charHeight / 15
-    );
+
+  if (fabric.isTouchSupported) {
+    pointerX = function(event) {
+      return _getPointer(event, 'pageX', 'clientX');
+    };
+    pointerY = function(event) {
+      return _getPointer(event, 'pageY', 'clientY');
+    };
   }
-  if (textDecoration.indexOf('overline') > -1) {
-    ctx.fillRect(
-      left,
-      top - (this._fontSizeMult - this._fontSizeFraction) * charHeight,
-      charWidth,
-      charHeight / 15
-    );
-  }
-};
+
+  fabric.Canvas.prototype.getPointer = function (e, ignoreZoom, upperCanvasEl) {
+    if (!upperCanvasEl) {
+      upperCanvasEl = this.upperCanvasEl;
+    }
+    var pointer = getPointer(e, upperCanvasEl),
+        bounds = upperCanvasEl.getBoundingClientRect(),
+        boundsWidth = bounds.width || 0,
+        boundsHeight = bounds.height || 0,
+        cssScale;
+
+    if (!boundsWidth || !boundsHeight ) {
+      if ('top' in bounds && 'bottom' in bounds) {
+        boundsHeight = Math.abs( bounds.top - bounds.bottom );
+      }
+      if ('right' in bounds && 'left' in bounds) {
+        boundsWidth = Math.abs( bounds.right - bounds.left );
+      }
+    }
+
+    this.calcOffset();
+
+    pointer.x = pointer.x - this._offset.left;
+    pointer.y = pointer.y - this._offset.top;
+    if (!ignoreZoom) {
+      pointer = fabric.util.transformPoint(
+        pointer,
+        fabric.util.invertTransform(this.viewportTransform)
+      );
+    }
+
+    if (boundsWidth === 0 || boundsHeight === 0) {
+      // If bounds are not available (i.e. not visible), do not apply scale.
+      cssScale = { width: 1, height: 1 };
+    }
+    else {
+      cssScale = {
+        width: upperCanvasEl.width / boundsWidth,
+        height: upperCanvasEl.height / boundsHeight
+      };
+    }
+
+    return {
+      x: pointer.x * cssScale.width,
+      y: pointer.y * cssScale.height
+    };
+  };
+
+  fabric.IText.prototype._renderCharDecoration = function(ctx, styleDeclaration, left, top, offset, charWidth, charHeight) {
+    var textDecoration = styleDeclaration
+          ? (styleDeclaration.textDecoration || this.textDecoration)
+          : this.textDecoration;
+
+    if (!textDecoration) {
+      return;
+    }
+
+    if (textDecoration.indexOf('underline') > -1) {
+      ctx.fillRect(
+        left,
+        top + charHeight / 10,
+        charWidth,
+        1
+      );
+    }
+    if (textDecoration.indexOf('line-through') > -1) {
+      ctx.fillRect(
+        left,
+        top - charHeight * (this._fontSizeFraction + this._fontSizeMult - 1) + charHeight / 15,
+        charWidth,
+        charHeight / 15
+      );
+    }
+    if (textDecoration.indexOf('overline') > -1) {
+      ctx.fillRect(
+        left,
+        top - (this._fontSizeMult - this._fontSizeFraction) * charHeight,
+        charWidth,
+        charHeight / 15
+      );
+    }
+  };
+})();
 
 function initializeCanvas() {
   var canvas = new fabric.Canvas('certificate', {

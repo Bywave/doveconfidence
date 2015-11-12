@@ -5,7 +5,7 @@ var $id = function(id) {
 
 var currentWord = 0;
 var windowIsLoaded = false;
-var _canvas = null;
+var canvas = null;
 var nameOnCertificate = '';
 
 Reveal.initialize({
@@ -41,6 +41,12 @@ Reveal.addEventListener('slidechanged', function(event) {
     $id('pledge-name-form').popup('hide');
   }
 
+  if (previousSlide.find('div.interactive-4').length > 0) {
+    if (canvas !== null) {
+      canvas.clear();
+    }
+  }
+
   if (currentSlide.find('iframe[data-autoplay]').length > 0) {
     $('div.reveal').addClass('dark');
 
@@ -53,7 +59,7 @@ Reveal.addEventListener('slidechanged', function(event) {
   }
 
   if (currentSlide.find('div.interactive-4').length > 0 && nameOnCertificate !== '') {
-    _canvas = initializeCanvas();
+    initializeCanvas();
   }
 
   ga('send', 'pageview', '/' + currentSlide.attr('id').replace(/#/, ''));
@@ -521,9 +527,11 @@ $id('create-new-pledge').on('click', function() {
 })();
 
 function initializeCanvas() {
-  var canvas = new fabric.Canvas('certificate', {
-    isDrawingMode: true
-  });
+  if (canvas === null) {
+    canvas = new fabric.Canvas('certificate', {
+      isDrawingMode: true
+    });
+  }
 
   var width = canvas.getWidth() - 5;
   var height = canvas.getHeight() - 5;
@@ -608,8 +616,6 @@ function initializeCanvas() {
 
   $id('download-pledge').show();
   $id('create-new-pledge').show();
-
-  return canvas;
 }
 
 function repeat(str, chr){
@@ -706,9 +712,9 @@ function addDetailsToCanvas(canvas, width, height) {
 }
 
 function downloadPledge(){
-  if (_canvas !== null) {
+  if (canvas !== null) {
     $('<a>').attr({
-      href: _canvas.toDataURL(),
+      href: canvas.toDataURL(),
       download: 'certificate.png'
     })[0].click();
 

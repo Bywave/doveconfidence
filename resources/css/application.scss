@@ -534,4 +534,12 @@ input.error {
       margin-right: 200px;
     }
   }
+
+  .warning {
+    font-size: 60px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+  }
 }

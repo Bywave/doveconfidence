@@ -7,6 +7,7 @@ var currentWord = 0;
 var windowIsLoaded = false;
 var canvas = null;
 var nameOnCertificate = '';
+var players = {};
 
 Reveal.initialize({
   controls: true,
@@ -25,32 +26,102 @@ Reveal.initialize({
   transition: 'convex'
 });
 
+function onYouTubeIframeAPIReady() {
+  var currentSlide = $('div.slides > section.present');
+
+  $('div.slides > section').each(function(index, slide) {
+    if ($(slide).data('video-id')) {
+      var videoId = $(slide).data('video-id');
+      var div = $('<div id="video-' + videoId + '">');
+
+      $('div.backgrounds > div:eq(' + index + ')').append(div);
+
+      players[videoId] = {
+        player: null,
+        isReady: false,
+        play: function() {
+          if (this.isReady) {
+            this.player.playVideo();
+          } else {
+            var _this = this;
+
+            var timer = setInterval(function() {
+              if (_this.isReady) {
+                _this.player.playVideo();
+                clearInterval(timer);
+              }
+            }, 500);
+          }
+        },
+        pause: function() {
+          if (this.isReady) {
+            this.player.pauseVideo();
+          }
+        }
+      };
+
+      players[videoId].player = new YT.Player('video-' + videoId, {
+        width: '100%',
+        height: '100%',
+        videoId: videoId,
+        playerVars: {
+          fs: 0
+        },
+        events: {
+          'onReady': function() {
+            players[videoId].isReady = true;
+            $id('video-' + videoId).addClass('video');
+          },
+          'onStateChange': function(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+              // don't use currentSlide
+              ga('send', 'event', 'Video', 'play', $('div.slides > section.present').find('h1').text());
+            }
+          }
+        }
+      });
+    }
+  });
+
+  if (currentSlide.data('video-id') && $.cookie('hide_intro_form') === '1') {
+    players[currentSlide.data('video-id')].play();
+  }
+}
+
 $('button.play-btn').on('click', function() {
   Reveal.next();
 });
 
+if ($('div.slides > section.present').data('video-id')) {
+  $('.reveal > .backgrounds')
+    .addClass('dark')
+    .css('z-index', 2);
+}
+
 Reveal.addEventListener('slidechanged', function(event) {
-  var previousSlide = $(event.previousSlide);
   var currentSlide = $(event.currentSlide);
+  var previousSlide = $(event.previousSlide)
 
-  if (previousSlide.find('iframe[data-autoplay]').length > 0) {
-    $('div.reveal').removeClass('dark');
-  }
-
-  if (previousSlide.find('div.interactive-3').length > 0) {
+  if (currentSlide.find('div.interactive-3').length < 1) {
     $id('pledge-name-form').popup('hide');
   }
 
-  if (previousSlide.find('div.interactive-4').length > 0) {
-    if (canvas !== null) {
-      canvas.clear();
-    }
+  if (previousSlide.data('video-id')) {
+    $('.reveal > .backgrounds')
+      .removeClass('dark')
+      .css('z-index', 0);
+
+    players[previousSlide.data('video-id')].pause();
   }
 
-  if (currentSlide.find('iframe[data-autoplay]').length > 0) {
-    $('div.reveal').addClass('dark');
+  if(currentSlide.data('video-id')) {
+    $('.reveal > .backgrounds')
+      .addClass('dark')
+      .css('z-index', 2);
 
-    ga('send', 'event', 'Video', 'play', currentSlide.find('h1').text());
+    if ($.cookie('hide_intro_form') === '1') {
+      players[currentSlide.data('video-id')].play();
+    }
   }
 
   if (currentSlide.find('div.interactive-1').length > 0 && (currentWord === 0 && currentSlide.find('div.skinny:not(.preload)').length < 1)) {
@@ -60,6 +131,10 @@ Reveal.addEventListener('slidechanged', function(event) {
 
   if (currentSlide.find('div.interactive-4').length > 0 && nameOnCertificate !== '') {
     initializeCanvas();
+  } else {
+    if (canvas !== null) {
+      canvas.clear();
+    }
   }
 
   ga('send', 'pageview', '/' + currentSlide.attr('id').replace(/#/, ''));
@@ -70,7 +145,7 @@ $id('show-second-block').on('click', function() {
   $id('second-block').show();
 });
 
-if ($.cookie('show_intro_form') !== '1') {
+if ($.cookie('hide_intro_form') !== '1') {
   $id('intro-form')
     .show()
     .popup('show');
@@ -235,12 +310,12 @@ $id('second-block')
           data: $(this).serialize()
         })
         .done(function() {
-          $.cookie('show_intro_form', '1', {expires: 0.5});
+          $.cookie('hide_intro_form', '1', {expires: 0.5});
           $id('intro-form').popup('hide');
 
           ga('send', 'event', 'Form', 'submit', 'Initial form');
         }); */
-      $.cookie('show_intro_form', '1', {expires: 0.5});
+      $.cookie('hide_intro_form', '1', {expires: 0.5});
       $id('intro-form').popup('hide');
 
       ga('send', 'event', 'Form', 'submit', 'Initial form');

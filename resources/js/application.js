@@ -120,7 +120,7 @@ Reveal.addEventListener('slidechanged', function(event) {
       .addClass('dark')
       .css('z-index', 2);
 
-    if ($.cookie('hide_intro_form') === '1') {
+    if ($.cookie('hide_intro_form') === '1' || !$id('intro-form').is(':visible')) {
       players[currentSlide.data('video-id')].play();
     }
   }

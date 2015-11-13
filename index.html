@@ -21,11 +21,11 @@
       <fieldset>
         <div class="field-group">
           <div class="field">
-            <label for="name">Your name</label>
+            <label for="name">Your name<span>Required</span>
             <input id="name" type="text" name="name" placeholder="First and last name" value="">
           </div>
           <div class="field">
-            <label for="schoolyear">Which year is the resource being used to teach?</label>
+            <label for="schoolyear">Which year is the resource being used to teach?<span>Required</span>
             <select id="schoolyear" name="schoolyear">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -44,18 +44,18 @@
         </div>
         <div class="field-group">
           <div class="field schoolname">
-            <label for="schoolname">Name of your school</label>
+            <label for="schoolname">Name of your school<span>Required</span>
             <input id="schoolname" type="text" name="schoolname" value="">
             <ul id="schoolnames"></ul>
           </div>
           <div class="field">
-            <label for="totalstudents">Total number of students you teach</label>
+            <label for="totalstudents">Total number of students you teach<span>Required</span>
             <input id="totalstudents" type="number" name="totalstudents" value="">
           </div>
         </div>
         <div class="field-group">
           <div class="field">
-            <label for="schoolrole">What is your role at the school?</label>
+            <label for="schoolrole">What is your role at the school?<span>Required</span>
             <select id="schoolrole" name="schoolrole">
               <option value="Primary School Teacher">Primary School Teacher</option>
               <option value="PDHPE Teacher (Secondary School)">PDHPE Teacher (Secondary School)</option>
@@ -64,18 +64,18 @@
             <input id="schoolroleother" type="text" name="schoolroleother" value="" style="display: none;">
           </div>
           <div class="field">
-            <label class="email" for="email">Your email address</label>
+            <label class="email" for="email">Your email address<span>Required, Must contain ".edu.au"</span>
             <input id="email" type="email" name="email" placeholder="name@domain.edu.au" value="">
           </div>
         </div>
         <div class="field-group">
           <div class="field">
-            <label for="classname">Name of your class</label>
+            <label for="classname">Name of your class<span>Required</span>
             <input id="classname" type="text" name="classname" value="">
           </div>
         </div>
         <div class="field-group">
-          <label><input type="checkbox" id="agree" name="agree" value="agree"> I agree to the <a href="http://www.unilever.com.au/resource/legalnotice/" target="_blank">terms and conditions</a>.</label>
+          <label><input type="checkbox" id="agree" name="agree" value="agree"> I agree to the <a href="http://www.unilever.com.au/resource/legalnotice/" target="_blank">terms and conditions</a>.<span>Required</span>
           <button id="submit-intro-form" disabled>START</button>
         </div>
       </fieldset>
@@ -83,12 +83,10 @@
   </div>
   <div id="pledge-name-form" class="smooth" style="display: none;">
     <form autocomplete="off">
-      <label for="student-name">Student Name:</label>
-      <input id="student-name" type="text" name="student-name" value="">
-      <div>or</div>
-      <label for="class-name">Class Name:</label>
-      <input id="class-name" type="text" name="class-name" value="">
-      <button id="enter-pledge-name">ENTER</button>
+      <label for="name-on-certificate">Student or Class Name:<span>Required</span>
+      <input id="name-on-certificate" type="text" name="name-on-certificate" value="">
+      <div></div>
+      <button id="enter-pledge-name">CONTINUE</button>
     </form>
   </div>
   <div class="reveal">

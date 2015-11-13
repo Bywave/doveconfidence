@@ -118,18 +118,11 @@ section.has-dark-background {
 		padding: 15px;
 		width: 50%;
 
-		label:after {
-			content: 'Required';
+		label span {
 			font-size: 10px;
-			position: absolute;
-			right: -45px;
-			top: 3px;
+      float: right;
+			margin-top: 3px;
 		}
-
-    label.email:after {
-      content: 'Required, Must contain ".edu.au"';
-      right: -151px;
-    }
 
 		input, select{
 			border: 1px solid #5785AB;
@@ -256,7 +249,6 @@ input.error {
   label {
     float: left;
     margin-right: 10px;
-    width: 180px;
   }
 
   input {
@@ -271,7 +263,7 @@ input.error {
     margin: 5px 0;
   }
 
-  label, input, div {
+  label, input {
     color: #333;
     font-size: 24px;
     font-weight: bold;

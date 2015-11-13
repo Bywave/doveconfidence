@@ -249,6 +249,14 @@ $id('second-block')
     return false;
   });
 
+$(function() {
+  $('#intro-form, #pledge-name-form').css('zoom', parseFloat($('div.slides').css('zoom')));
+
+  $(window).on('resize', function() {
+    $('#intro-form, #pledge-name-form').css('zoom', parseFloat($('div.slides').css('zoom')));
+  });
+});
+
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -367,12 +375,9 @@ $('div.interactive-3 li').on('click', function() {
 });
 
 $id('enter-pledge-name').on('click', function() {
-  var studentName = $id('student-name').val();
-  var className = $id('class-name').val();
+  nameOnCertificate = $id('name-on-certificate').val();
 
-  if (studentName || className) {
-    nameOnCertificate = studentName || className;
-
+  if (nameOnCertificate) {
     ga('send', 'event', 'Form', 'enter-pledge-name', nameOnCertificate);
 
     Reveal.next();

@@ -6,9 +6,89 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <style>
+  @font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('font/bebasneue_regular-webfont.eot');
+    src: url('font/bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
+     url('font/bebasneue_regular-webfont.woff') format('woff'),
+     url('font/bebasneue_regular-webfont.ttf') format('truetype'),
+     url('font/bebasneue_regular-webfont.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  #preloader-wrapper {
+    background-color: #FFF;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+  }
+
+  #preloader {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%)
+  }
+  </style>
+  <script src="images.js"></script>
+  <script src="preloader.js"></script>
   <link href="css/application.css" media="screen, projection" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <div id="preloader-wrapper">
+    <div id="preloader"></div>
+  </div>
+  <script>
+    var preloader = new PercentageLoader(document.getElementById('preloader'), {
+      width: 256,
+      height: 256,
+      controllable: true,
+      progress: 0.5,
+      onProgressUpdate: function(val) {
+        this.setValue(Math.round(val * 100.0));
+      }
+    });
+
+    preloader.loaded(function() {
+      var loaded = 0;
+
+      for (var i = 0; i < json.images.length; i++) {
+        (function() {
+          var index = i;
+          var image = new Image();
+          image.src = json.images[index].name;
+
+          var load = function() {
+            loaded += json.images[index].size;
+
+            if ((loaded / json.totalSize).toFixed(2) >= 1) {
+              setTimeout(function() {
+                document.getElementById('preloader-wrapper').style.display = 'none';
+              }, 500);
+            }
+
+            preloader.setProgress(loaded / json.totalSize);
+            preloader.setValue(loaded.toString() + 'kb');
+          };
+
+          if (image.addEventListener) {
+            image.addEventListener('load', load);
+          } else {
+            image.attachEvent('onload', load);
+          }
+        })();
+      }
+    });
+  </script>
   <div id="intro-form" class="smooth" style="display: none;">
     <div id="first-block">
       <p>Welcome to the interactive version of the <br>Confident Me workshop.</p>

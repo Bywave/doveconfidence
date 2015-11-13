@@ -11,10 +11,19 @@ var minifyCss = require('gulp-minify-css');
 var eslint = require('gulp-eslint');
 var pngquant = require('imagemin-pngquant');
 var svg2png = require('gulp-svg2png');
+var del = require('del');
+var file = require('gulp-file');
+
+var tap = require('gulp-tap');
+var fs = require('fs');
 
 var vendors = require('./package').vendors;
 var src = './';
 var dist = './../';
+var json = {
+  images: [],
+  totalSize: 0
+};
 
 gulp.task('lint', function () {
   return gulp
@@ -25,16 +34,20 @@ gulp.task('lint', function () {
 
 gulp.task('compile:javascript', ['lint'], function() {
   return gulp.src(src + 'js/**/*.js')
-      .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe(uglify())
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(dist + 'js'));
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dist + 'js'));
 });
 
 gulp.task('compile:javascript:vendors', function() {
   return gulp.src(vendors)
     .pipe(concat('vendors.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
     .pipe(uglify())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dist + 'js'));
@@ -43,7 +56,9 @@ gulp.task('compile:javascript:vendors', function() {
 gulp.task('compile:sass', function() {
   return gulp.src([src + 'css/**/*.scss', '!' + src + 'css/**/_*.scss'])
     .pipe(sass().on('error', gutil.log))
-    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
     .pipe(minifyCss())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dist + 'css'));
@@ -55,12 +70,44 @@ gulp.task('svg2png', function () {
     .pipe(gulp.dest(src + 'images'));
 });
 
-gulp.task('optimize:images', ['svg2png'], function () {
+gulp.task('delete:images-js', function () {
+  return del.sync(dist + 'images.js', {
+    force: true
+  });
+});
+
+gulp.task('list:images', function () {
+  var path = __dirname.replace('resources', '');
+
+  return gulp.src([dist + 'images/**/*', '!' + dist + 'images/**/*.svg'])
+    .pipe(tap(function(file, t) {
+      var stats = fs.statSync(file.path)
+
+      json.images.push({
+        name: file.path.replace(path, ''),
+        size: stats['size']
+      });
+
+      json.totalSize += stats['size'];
+    }));
+});
+
+gulp.task('generate:images-js', ['delete:images-js', 'list:images'], function() {
+  return file('images.js', 'var json = ' + JSON.stringify(json) + ';', {
+      src: true
+    })
+    .pipe(uglify())
+    .pipe(gulp.dest(dist));
+});
+
+gulp.task('optimize:images', ['svg2png', 'generate:json'], function () {
   return gulp.src([src + 'images/**/*', '!' + src + 'images/**/*.svg'])
     .pipe(imagemin({
       progressive: true,
       interlaced: true,
-      svgoPlugins: [{removeViewBox: false}],
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
       optimizationLevel: 7,
       multipass: true,
       use: [pngquant()]

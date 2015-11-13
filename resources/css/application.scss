@@ -7,7 +7,7 @@
 @import './../vendors/jquery-selectric/public/selectric.css';
 @import 'checkbox';
 
-@include font-face('skinnycaps', './../font/skinnycaps');
+@include font-face('skinnycaps', './../font/skinnycaps-webfont');
 
 $backgroundColor: #fff;
 $mainColor: #222;
@@ -544,7 +544,7 @@ input.error {
     left: 50%;
     position: absolute;
     top: 50%;
-    transform: translateX(-50%);
+    @include transform(translateX(-50%) translateY(-50%));
   }
 }
 

@@ -65,7 +65,8 @@ function onYouTubeIframeAPIReady() {
         height: '100%',
         videoId: videoId,
         playerVars: {
-          fs: 0
+          fs: 0,
+          origin: window.location.protocol + '//' + window.location.hostname
         },
         events: {
           'onReady': function() {

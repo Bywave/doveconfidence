@@ -72,12 +72,23 @@
 
             if ((loaded / json.totalSize).toFixed(2) >= 1) {
               setTimeout(function() {
-                document.getElementById('preloader-wrapper').style.display = 'none';
+                var opacity = 1;
+                var element = document.getElementById('preloader-wrapper');
+                var timer = setInterval(function() {
+                  if (opacity <= 0.1){
+                    clearInterval(timer);
+                    element.style.display = 'none';
+                  }
+
+                  element.style.opacity = opacity;
+                  element.style.filter = 'alpha(opacity=' + (opacity * 100) + ')';
+                  opacity -= opacity * 0.1;
+                }, 1);
               }, 500);
             }
 
             preloader.setProgress(loaded / json.totalSize);
-            preloader.setValue(loaded.toString() + 'kb');
+            preloader.setValue((loaded / 1024).toFixed().toString() + 'kb');
           };
 
           if (image.addEventListener) {

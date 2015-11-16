@@ -131,6 +131,11 @@ Reveal.addEventListener('slidechanged', function(event) {
 
   if (currentSlide.find('div.interactive-1').length > 0 && (currentWord === 0 && currentSlide.find('div.skinny:not(.preload)').length < 1)) {
     $('div.preload').remove();
+
+    Reveal.configure({
+      touch: false
+    });
+
     showWord(currentWord);
   }
 
@@ -396,8 +401,8 @@ function dropListener(time) {
     var diffX = $('div.' + _time + '.dropzone').offset().left - $('div.interactive-1').offset().left;
     var diffY = $('div.' + _time + '.dropzone').offset().top - $('div.interactive-1').offset().top;
 
-    var x = parseInt(ui.item.data('x'), 10) - diffX;
-    var y = parseInt(ui.item.data('y'), 10) - (diffY + 6);
+    var x = parseInt(ui.item.data('x'), 10) - (diffX + 6);
+    var y = parseInt(ui.item.data('y'), 10) - (diffY + 9);
 
     ui.item
       .addClass('minimize')

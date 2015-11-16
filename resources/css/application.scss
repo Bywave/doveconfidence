@@ -323,6 +323,7 @@ input.error {
 .words {
   @include clearfix();
   color: #9B5FA3;
+  cursor: move;
   display: inline-block;
   font-size: 100px !important;
   letter-spacing: -10px;
@@ -336,6 +337,7 @@ input.error {
   }
 
   &.minimize {
+    cursor: auto;
     font-size: 20px !important;
     letter-spacing: 0;
     @include transition(font-size 500ms ease, letter-spacing 500ms ease, top 500ms ease, left 500ms ease);

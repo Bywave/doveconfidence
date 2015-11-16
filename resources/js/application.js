@@ -100,6 +100,10 @@ if ($('div.slides > section.present').data('video-id')) {
 }
 
 Reveal.addEventListener('slidechanged', function(event) {
+  Reveal.configure({
+    touch: true
+  });
+
   var currentSlide = $(event.currentSlide);
   var previousSlide = $(event.previousSlide)
 
@@ -131,6 +135,10 @@ Reveal.addEventListener('slidechanged', function(event) {
   }
 
   if (currentSlide.find('div.interactive-4').length > 0 && nameOnCertificate !== '') {
+    Reveal.configure({
+      touch: false
+    });
+
     initializeCanvas();
   } else {
     if (canvas !== null) {
@@ -360,9 +368,7 @@ function showWord(index) {
       .css('left', ($('div.interactive-1').outerWidth() / 2) - (word.outerWidth() / 2))
       .hide()
       .fadeIn()
-      .draggable({
-        cursor: 'move'
-      });
+      .draggable();
   }
 }
 
@@ -370,7 +376,7 @@ function dragListener(time) {
   var _time = time;
 
   return function(event, ui) {
-    if (ui.draggable.is('[data-' + _time + ']')) {
+    if (ui.item.is('[data-' + _time + ']')) {
       $(this).addClass('drop-active');
     }
   };
@@ -380,17 +386,20 @@ function dropListener(time) {
   var _time = time;
 
   return function(event, ui) {
-    if (!ui.draggable.is('[data-' + _time + ']')) {
-      ga('send', 'event', 'Timeline', 'incorrect', ui.draggable.html().replace(/<br>/g, ''));
+    if (!ui.item.is('[data-' + _time + ']')) {
+      ga('send', 'event', 'Timeline', 'incorrect', ui.item.html().replace(/<br>/g, ''));
       return;
     }
 
-    ga('send', 'event', 'Timeline', 'correct', ui.draggable.html().replace(/<br>/g, ''));
+    ga('send', 'event', 'Timeline', 'correct', ui.item.html().replace(/<br>/g, ''));
 
-    var x = parseInt(ui.draggable.data('x'), 10);
-    var y = parseInt(ui.draggable.data('y'), 10);
+    var diffX = $('div.' + _time + '.dropzone').offset().left - $('div.interactive-1').offset().left;
+    var diffY = $('div.' + _time + '.dropzone').offset().top - $('div.interactive-1').offset().top;
 
-    ui.draggable
+    var x = parseInt(ui.item.data('x'), 10) - diffX;
+    var y = parseInt(ui.item.data('y'), 10) - (diffY + 6);
+
+    ui.item
       .addClass('minimize')
       .css('left', x)
       .css('top', y)
@@ -402,31 +411,36 @@ function dropListener(time) {
   };
 }
 
-$('.before.dropzone').droppable({
-  accept: '.words',
-  over: dragListener('before'),
-  out: function(event, ui) {
+$('div.before.dropzone')
+  .droppable({
+    accept: '.words'
+  })
+  .on('droppable:drop', dropListener('before'))
+  .on('droppable:over', dragListener('before'))
+  .on('droppable:out', function(event, ui) {
     $(this).removeClass('drop-active');
-  },
-  tolerance: 'touch',
-  drop: dropListener('before')
-});
+  });
 
-$('.after.dropzone').droppable({
-  accept: '.words',
-  over: dragListener('after'),
-  out: function(event, ui) {
+$('div.after.dropzone')
+  .droppable({
+    accept: '.words'
+  })
+  .on('droppable:drop', dropListener('after'))
+  .on('droppable:over', dragListener('after'))
+  .on('droppable:out', function(event, ui) {
     $(this).removeClass('drop-active');
-  },
-  tolerance: 'touch',
-  drop: dropListener('after')
-});
+  });
 
 $(window).load(function() {
   windowIsLoaded = true;
 
   if (!!(window.location + '').match(/page-10/)) {
     $('div.preload').remove();
+
+    Reveal.configure({
+      touch: false
+    });
+
     showWord(currentWord); // have to wait for the custom font to load
   }
 });

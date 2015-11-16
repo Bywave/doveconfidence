@@ -97,7 +97,7 @@ gulp.task('generate:images-js', ['delete:images-js', 'list:images'], function() 
       src: true
     })
     .pipe(uglify())
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(dist + 'js'));
 });
 
 gulp.task('optimize:images', ['svg2png', 'generate:json'], function () {

@@ -1,5 +1,6 @@
 @import './../vendors/normalize-css/normalize';
-@import './../vendors/bourbon/app/assets/stylesheets/_bourbon';
+@import './../vendors/bourbon/app/assets/stylesheets/bourbon';
+@import './../vendors/neat/app/assets/stylesheets/neat';
 @import './../vendors/reveal.js/css/reveal';
 @import './../vendors/reveal.js/css/theme/template/mixins';
 @import './../vendors/reveal.js/css/theme/template/settings';
@@ -338,13 +339,21 @@ input.error {
 
   &.minimize {
     cursor: auto;
-    font-size: 25px !important;
+    font-size: 20px !important;
     letter-spacing: 0;
     @include transition(font-size 500ms ease, letter-spacing 500ms ease, top 500ms ease, left 500ms ease);
 
     br {
       display: block;
     }
+
+    @include media(em(860)) {
+      font-weight: bold;
+    }
+  }
+
+  &.clone {
+    opacity: 0.7;
   }
 }
 

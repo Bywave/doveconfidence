@@ -373,7 +373,11 @@ function showWord(index) {
       .css('left', ($('div.interactive-1').outerWidth() / 2) - (word.outerWidth() / 2))
       .hide()
       .fadeIn()
-      .draggable();
+      .draggable({
+        clone: function() {
+          return this.clone().addClass('clone');
+        }
+      });
   }
 }
 
@@ -398,11 +402,8 @@ function dropListener(time) {
 
     ga('send', 'event', 'Timeline', 'correct', ui.item.html().replace(/<br>/g, ''));
 
-    var diffX = $('div.' + _time + '.dropzone').offset().left - $('div.interactive-1').offset().left;
-    var diffY = $('div.' + _time + '.dropzone').offset().top - $('div.interactive-1').offset().top;
-
-    var x = parseInt(ui.item.data('x'), 10) - (diffX + 6);
-    var y = parseInt(ui.item.data('y'), 10) - (diffY + 9);
+    var x = parseInt(ui.item.data('x'), 10);
+    var y = parseInt(ui.item.data('y'), 10);
 
     ui.item
       .addClass('minimize')
@@ -418,7 +419,8 @@ function dropListener(time) {
 
 $('div.before.dropzone')
   .droppable({
-    accept: '.words'
+    accept: '.words',
+    receiveHandler: $.noop
   })
   .on('droppable:drop', dropListener('before'))
   .on('droppable:over', dragListener('before'))
@@ -428,7 +430,8 @@ $('div.before.dropzone')
 
 $('div.after.dropzone')
   .droppable({
-    accept: '.words'
+    accept: '.words',
+    receiveHandler: $.noop
   })
   .on('droppable:drop', dropListener('after'))
   .on('droppable:over', dragListener('after'))

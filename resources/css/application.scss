@@ -340,6 +340,7 @@ input.error {
   &.minimize {
     cursor: auto;
     font-size: 20px !important;
+    font-weight: bold;
     letter-spacing: 0;
     @include transition(font-size 500ms ease, letter-spacing 500ms ease, top 500ms ease, left 500ms ease);
 
@@ -348,7 +349,7 @@ input.error {
     }
 
     @include media(em(860)) {
-      font-weight: bold;
+      font-weight: normal;
     }
   }
 

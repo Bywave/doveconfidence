@@ -330,7 +330,9 @@ input.error {
   letter-spacing: -10px;
   position: absolute;
   text-transform: uppercase;
-  @include transition(font-size 500ms ease, letter-spacing 500ms ease);
+  @include transition-property(font-size, letter-spacing, left, top);
+  @include transition-duration(200ms);
+  @include transition-timing-function(ease);
   white-space: nowrap;
 
   br {
@@ -342,7 +344,9 @@ input.error {
     font-size: 20px !important;
     font-weight: bold;
     letter-spacing: 0;
-    @include transition(font-size 500ms ease, letter-spacing 500ms ease, top 500ms ease, left 500ms ease);
+    @include transition-property(font-size, letter-spacing, left, top, transform);
+    @include transition-duration(200ms);
+    @include transition-timing-function(ease);
 
     br {
       display: block;

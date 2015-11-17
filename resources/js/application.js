@@ -8,6 +8,12 @@ var windowIsLoaded = false;
 var canvas = null;
 var nameOnCertificate = '';
 var players = {};
+var transform = 'transform' in document.body.style
+  ? 'transform': 'webkitTransform' in document.body.style
+  ? 'webkitTransform': 'mozTransform' in document.body.style
+  ? 'mozTransform': 'oTransform' in document.body.style
+  ? 'oTransform': 'msTransform' in document.body.style
+  ? 'msTransform': null;
 
 Reveal.initialize({
   controls: true,
@@ -33,7 +39,6 @@ function onYouTubeIframeAPIReady() {
     if ($(slide).data('video-id')) {
       var videoId = $(slide).data('video-id');
       var div = $('<div id="video-' + videoId + '">');
-
       $('div.backgrounds > div:eq(' + index + ')').append(div);
 
       players[videoId] = {
@@ -338,7 +343,7 @@ $id('second-block')
     return false;
   });
 
-$(function() {
+$(window).load(function() {
   $('#intro-form, #pledge-name-form').css('zoom', parseFloat($('div.slides').css('zoom')));
 
   $(window).on('resize', function() {
@@ -373,11 +378,16 @@ function showWord(index) {
       .css('left', ($('div.interactive-1').outerWidth() / 2) - (word.outerWidth() / 2))
       .hide()
       .fadeIn()
-      .draggable({
+
+    if (transform) {
+      word.draggable();
+    } else {
+      word.draggable({
         clone: function() {
           return this.clone().addClass('clone');
         }
       });
+    }
   }
 }
 
@@ -405,11 +415,28 @@ function dropListener(time) {
     var x = parseInt(ui.item.data('x'), 10);
     var y = parseInt(ui.item.data('y'), 10);
 
-    ui.item
-      .addClass('minimize')
-      .css('left', x)
-      .css('top', y)
-      .draggable('disable');
+    if (transform) {
+      var clone = ui.item.clone();
+      ui.item.replaceWith(clone);
+
+      setTimeout(function() {
+        clone
+          .addClass('minimize')
+          .css({
+            left: 0,
+            top: 0
+          })
+          .css(transform, 'translate(' + x + 'px, ' + y + 'px)');
+      }, 251);
+    } else {
+      ui.item
+        .addClass('minimize')
+        .css({
+          left: x,
+          top: y
+        })
+        .draggable('disable');
+    }
 
     showWord(++currentWord);
 

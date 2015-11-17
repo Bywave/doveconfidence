@@ -32,6 +32,38 @@ Reveal.initialize({
   transition: 'convex'
 });
 
+function touch(enable) {
+  enable = (enable !== null) ? !!enable : true;
+
+  var config = Reveal.getConfig();
+  config.touch = enable;
+
+  Reveal.removeEventListeners();
+  Reveal.addEventListeners();
+}
+
+function getScale() {
+  var element = $('div.slides');
+  var zoom = parseFloat(element.css('zoom'));
+
+  if (isNaN(zoom)) {
+    matches = element.css(transform).match(/matrix\((-?\d*\.?\d+),\s*-?\d*\.?\d+,\s*-?\d*\.?\d+,\s*(-?\d*\.?\d+),\s*-?\d*\.?\d+,\s*-?\d*\.?\d+\)/);
+    zoom = [matches[1], matches[2]];
+  }
+
+  return zoom;
+}
+
+function scaleElements(element) {
+  var scale = getScale();
+
+  if ($.isArray(scale)) {
+    $(element).css(transform, 'scaleX(' + scale[0] + ') scaleY(' + scale[1] + ')');
+  } else {
+    $(element).css('zoom', scale);
+  }
+}
+
 function onYouTubeIframeAPIReady() {
   var currentSlide = $('div.slides > section.present');
 
@@ -105,9 +137,7 @@ if ($('div.slides > section.present').data('video-id')) {
 }
 
 Reveal.addEventListener('slidechanged', function(event) {
-  Reveal.configure({
-    touch: true
-  });
+  touch(true);
 
   var currentSlide = $(event.currentSlide);
   var previousSlide = $(event.previousSlide)
@@ -137,17 +167,13 @@ Reveal.addEventListener('slidechanged', function(event) {
   if (currentSlide.find('div.interactive-1').length > 0 && (currentWord === 0 && currentSlide.find('div.skinny:not(.preload)').length < 1)) {
     $('div.preload').remove();
 
-    Reveal.configure({
-      touch: false
-    });
+    touch(false);
 
     showWord(currentWord);
   }
 
   if (currentSlide.find('div.interactive-4').length > 0 && nameOnCertificate !== '') {
-    Reveal.configure({
-      touch: false
-    });
+    touch(false);
 
     initializeCanvas();
   } else {
@@ -344,10 +370,10 @@ $id('second-block')
   });
 
 $(window).load(function() {
-  $('#intro-form, #pledge-name-form').css('zoom', parseFloat($('div.slides').css('zoom')));
+  scaleElements('#intro-form, #pledge-name-form');
 
   $(window).on('resize', function() {
-    $('#intro-form, #pledge-name-form').css('zoom', parseFloat($('div.slides').css('zoom')));
+    scaleElements('#intro-form, #pledge-name-form');
   });
 });
 
@@ -472,9 +498,7 @@ $(window).load(function() {
   if (!!(window.location + '').match(/page-10/)) {
     $('div.preload').remove();
 
-    Reveal.configure({
-      touch: false
-    });
+    touch(false);
 
     showWord(currentWord); // have to wait for the custom font to load
   }
@@ -530,13 +554,18 @@ $id('create-new-pledge').on('click', function() {
 
         scroll = fabric.util.getScrollLeftTop(element, upperCanvasEl);
 
-    var scale = parseFloat($('div.slides').css('zoom'));
+    var scale = getScale();
 
     var x = pointerX(event) + scroll.left;
     var y = pointerY(event) + scroll.top;
 
-    x = x / scale;
-    y = y / scale;
+    if ($.isArray(scale)) {
+      x = x / scale[0];
+      y = y / scale[1];
+    } else {
+      x = x / scale;
+      y = y / scale;
+    }
 
     return {
       x: x,

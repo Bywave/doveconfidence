@@ -45,9 +45,9 @@ function touch(enable) {
 function getScale() {
   var element = $('div.slides');
   var zoom = parseFloat(element.css('zoom'));
+  var matches = element.css(transform).match(/matrix\((-?\d*\.?\d+),\s*-?\d*\.?\d+,\s*-?\d*\.?\d+,\s*(-?\d*\.?\d+),\s*-?\d*\.?\d+,\s*-?\d*\.?\d+\)/);
 
-  if (isNaN(zoom)) {
-    matches = element.css(transform).match(/matrix\((-?\d*\.?\d+),\s*-?\d*\.?\d+,\s*-?\d*\.?\d+,\s*(-?\d*\.?\d+),\s*-?\d*\.?\d+,\s*-?\d*\.?\d+\)/);
+  if (isNaN(zoom) || matches !== null) {
     zoom = [matches[1], matches[2]];
   }
 
@@ -369,12 +369,8 @@ $id('second-block')
     return false;
   });
 
-$(window).load(function() {
+$(window).on('load resize orientationchange', function() {
   scaleElements('#intro-form, #pledge-name-form');
-
-  $(window).on('resize', function() {
-    scaleElements('#intro-form, #pledge-name-form');
-  });
 });
 
 function shuffleArray(array) {

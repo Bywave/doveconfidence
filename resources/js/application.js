@@ -54,13 +54,16 @@ function getScale() {
   return zoom;
 }
 
-function scaleElements(element) {
+function scaleForms() {
+  var element = $('#intro-form, #pledge-name-form').removeClass('center');
   var scale = getScale();
 
   if ($.isArray(scale)) {
-    $(element).css(transform, 'scaleX(' + scale[0] + ') scaleY(' + scale[1] + ')');
+    element.css(transform, 'translate(-50%, -50%) scaleX(' + scale[0] + ') scaleY(' + scale[1] + ')');
   } else {
-    $(element).css('zoom', scale);
+    element
+      .css(transform, 'translate(-50%, -50%)')
+      .css('zoom', scale);
   }
 }
 
@@ -370,7 +373,7 @@ $id('second-block')
   });
 
 $(window).on('load resize orientationchange', function() {
-  scaleElements('#intro-form, #pledge-name-form');
+  scaleForms();
 });
 
 function shuffleArray(array) {

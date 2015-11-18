@@ -80,6 +80,16 @@ section.has-dark-background {
 	@include transition(all 0.3s 0.3s);
 }
 
+#intro-form, #pledge-name-form {
+  left: 50%;
+  position: absolute !important;
+  top: 50%;
+
+  &.center {
+    @include transform(translate(-50%, -50%) !important);
+  }
+}
+
 #intro-form, #pledge-name-form, .popup_wrapper {
 	@include transition(all 0.3s ease-out);
 }

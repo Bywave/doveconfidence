@@ -20,6 +20,8 @@
     "fabric.js": "fabric#~1.5.0",
     "jquery-dateFormat": "~1.0.2",
     "touch-dnd": "~1.1.0",
-    "neat": "~1.7.2"
+    "neat": "~1.7.2",
+    "FileSaver.js": "~0.0.2",
+    "canvas-toBlob.js": "~0.1.3"
   }
 }

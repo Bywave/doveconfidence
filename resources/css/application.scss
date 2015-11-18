@@ -10,7 +10,7 @@
 
 @include font-face('skinnycaps', './../font/skinnycaps-webfont');
 
-$backgroundColor: #fff;
+$backgroundColor: #FFF;
 $mainColor: #222;
 $headingColor: #222;
 $mainFontSize: 38px;
@@ -37,7 +37,7 @@ $heading4Size: 1.0em;
 
 section.has-dark-background {
 	&, h1, h2, h3, h4, h5, h6 {
-		color: #fff;
+		color: #FFF;
 	}
 }
 
@@ -108,7 +108,7 @@ section.has-dark-background {
 		background-color: #A3CD83;
 		border: 0 none;
 		border-radius: 10px;
-		color: #FFFFFF;
+		color: #FFF;
 		float: right;
 		font-size: 30px;
 		padding: 20px 35px;
@@ -541,17 +541,25 @@ input.error {
     width: 100%;
   }
 
-  button {
+  a, button {
     background-color: #A3CD83;
     border: 0 none;
     border-radius: 10px;
-    color: #FFFFFF;
+    color: #FFF;
     display: inline;
     font-size: 30px;
     padding: 10px 35px;
 
     &:first-child {
       margin-right: 200px;
+    }
+  }
+
+  a {
+    cursor: pointer;
+
+    &:hover {
+      color: #FFF;
     }
   }
 

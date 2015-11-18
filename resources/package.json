@@ -36,6 +36,8 @@
     "./vendors/jquery-debounce/jquery.debounce.js",
     "./vendors/touch-dnd/touch-dnd.js",
     "./vendors/fabric.js/dist/fabric.js",
-    "./vendors/jquery-dateFormat/dist/jquery-dateFormat.js"
+    "./vendors/jquery-dateFormat/dist/jquery-dateFormat.js",
+    "./vendors/FileSaver.js/FileSaver.js",
+    "./vendors/canvas-toBlob.js/canvas-toBlob.js"
   ]
 }

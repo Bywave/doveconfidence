@@ -159,7 +159,7 @@ Reveal.addEventListener('slidechanged', function(event) {
       .addClass('dark')
       .css('z-index', 2);
 
-    if ($.cookie('hide_intro_form') === '1' || !$id('intro-form').is(':visible')) {
+    if ($.cookie('hide_intro_form') === '1' || !$id('intro-form').is('.popup_content_visible')) {
       players[currentSlide.data('video-id')].play();
     }
   }
@@ -559,10 +559,7 @@ $id('create-new-pledge').on('click', function() {
     var x = pointerX(event) + scroll.left;
     var y = pointerY(event) + scroll.top;
 
-    if ($.isArray(scale)) {
-      x = x / scale[0];
-      y = y / scale[1];
-    } else {
+    if (!$.isArray(scale)) {
       x = x / scale;
       y = y / scale;
     }
@@ -870,19 +867,23 @@ function addDetailsToCanvas(canvas, width, height) {
   }));
 }
 
-function downloadPledge(){
+$id('download-pledge').on('click', function() {
   if (canvas !== null) {
-    $('<a>').attr({
-      href: canvas.toDataURL(),
-      download: 'certificate.png'
-    })[0].click();
+
+    if (/MSIE\s/.test(navigator.userAgent) && parseFloat(navigator.appVersion.split('MSIE')[1]) < 10) {
+      window
+        .open()
+        .document.write('<img src="' + canvas.toDataURL() + '">');
+    } else {
+      document
+        .getElementById('certificate')
+        .toBlob(function(blob) {
+          saveAs(blob, 'certificate.png');
+        });
+    }
 
     ga('send', 'event', 'Button', 'click', 'Download this pledge');
   }
-}
-
-$id('download-pledge').on('click', function() {
-  downloadPledge();
 });
 
 

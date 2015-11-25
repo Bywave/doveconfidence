@@ -100,7 +100,7 @@ gulp.task('generate:images-js', ['delete:images-js', 'list:images'], function() 
     .pipe(gulp.dest(dist + 'js'));
 });
 
-gulp.task('optimize:images', ['svg2png', 'generate:json'], function () {
+gulp.task('optimize:images', ['svg2png'], function() {
   return gulp.src([src + 'images/**/*', '!' + src + 'images/**/*.svg'])
     .pipe(imagemin({
       progressive: true,

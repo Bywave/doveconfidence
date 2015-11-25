@@ -403,6 +403,19 @@ function showWord(index) {
       .css('left', ($('div.interactive-1').outerWidth() / 2) - (word.outerWidth() / 2))
       .hide()
       .fadeIn()
+      .on('mouseover', function() {
+        if (!$(this).is('.minimize')) {
+          $(this).addClass('mouseover');
+        }
+      })
+      .on('mousedown', function() {
+        if (!$(this).is('.minimize')) {
+          $(this).addClass('mousedown');
+        }
+      })
+      .on('mouseup', function() {
+        $(this).removeClass('mouseover mousedown');
+      });
 
     if (transform) {
       word.draggable();
@@ -494,7 +507,7 @@ $('div.after.dropzone')
 $(window).load(function() {
   windowIsLoaded = true;
 
-  if (!!(window.location + '').match(/page-10/)) {
+  if (!!(window.location + '').match(/page-11/)) {
     $('div.preload').remove();
 
     touch(false);

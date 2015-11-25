@@ -304,13 +304,14 @@ input.error {
     background-color: transparent;
     border: 4px solid #7DB2DB;
     border-radius: 10px;
-    color: #7DB2DB;
-    height: 79px;
-    padding: 12px 34px;
+    color: darken(#7DB2DB, 15%);
+    font-size: 18px;
+    height: 110px;
+    padding: 40px 0px;
     position: absolute;
     @include transition(border-color 500ms ease, color 500ms ease);
     top: 20%;
-    width: 96px;
+    width: 120px;
   }
 
   .before {
@@ -334,7 +335,7 @@ input.error {
 .words {
   @include clearfix();
   color: #9B5FA3;
-  cursor: move;
+  cursor: grab;
   display: inline-block;
   font-size: 100px !important;
   letter-spacing: -10px;
@@ -347,6 +348,19 @@ input.error {
 
   br {
     display: none;
+  }
+
+  &.mouseover {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+
+  &.mousedown {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
   }
 
   &.minimize {

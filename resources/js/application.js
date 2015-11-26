@@ -847,7 +847,7 @@ function addDetailsToCanvas(canvas, width, height) {
       fontFamily: 'skinnycaps',
       fontSize: 80,
       left: 100,
-      top: 200 + (60 * i),
+      top: 250 + (60 * i),
       width: width - 120,
       styles: styles
     });

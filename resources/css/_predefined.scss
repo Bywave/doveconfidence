@@ -1706,8 +1706,20 @@ html, body {
 -----------------------------------------------------------------------*/
 
 #page-43 .container  {
-    background: url(../images/page37/body-bg.jpg) 50% 0 no-repeat;
+    background: url(../images/page37/body-bg.png) 50% 0 no-repeat;
     background-size: cover;
+    position: relative;
+}
+
+#page-43 .container:after  {
+    background: url(../images/page37/body-bg2.png) 50% 0 no-repeat;
+    background-size: cover;
+    bottom: 0;
+    content: '';
+    height: 502px;
+    position: absolute;
+    width: 720px;
+    z-index: 1;
 }
 
 #page-43 .image-1 {

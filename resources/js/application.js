@@ -118,6 +118,10 @@ function onYouTubeIframeAPIReady() {
               // don't use currentSlide
               ga('send', 'event', 'Video', 'play', $('div.slides > section.present').find('h1').text());
             }
+
+            if (event.data == YT.PlayerState.ENDED) {
+              Reveal.next();
+            }
           }
         }
       });

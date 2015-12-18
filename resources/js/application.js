@@ -3,6 +3,10 @@ var $id = function(id) {
   return $(document.getElementById(id));
 };
 
+function val(id) {
+  return $id(id).val();
+}
+
 var currentWord = 0;
 var windowIsLoaded = false;
 var canvas = null;
@@ -354,19 +358,19 @@ $id('second-block')
     };
 
     if (!isOnError) {
-      /* $
+      $
         .ajax({
           type: 'POST',
-          url: '',
-          crossDomain: true,
-          data: $(this).serialize()
+          url: 'http://integr8a.trclient.com/UnileverDove_S/Ajaxcall.aspx?do=submit1&name=' + val('name') + '&e=' + val('email').replace('+', '%2B') + '&role=' + (val('schoolrole') === 'Other' ? val('schoolroleother') : val('schoolrole')) + '&NoStud=' + val('totalstudents') + '&NSchool=' + val('schoolname') + '&year=' + val('schoolyear') + '&opt=1',
+          crossDomain: true/*,
+          data: $(this).serialize()*/
         })
         .done(function() {
           $.cookie('hide_intro_form', '1', {expires: 0.5});
           $id('intro-form').popup('hide');
 
           ga('send', 'event', 'Form', 'submit', 'Initial form');
-        }); */
+        });
       $.cookie('hide_intro_form', '1', {expires: 0.5});
       $id('intro-form').popup('hide');
 

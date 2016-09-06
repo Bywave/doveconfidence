@@ -335,8 +335,8 @@ $id('second-block')
 
       if (fields[i].value === '') {
         error = 'Field is required.';
-      } else if (fields[i].name === 'email' && !/\.edu\.au$/i.test(fields[i].value)) {
-        error = 'Email address must contain ".edu.au".';
+      } else if (fields[i].name === 'email' && !/(\.edu\.au|\.org\.au)$/i.test(fields[i].value)) {
+        error = 'Email address must contain ".edu.au" or ".org.au"';
       } else if (fields[i].name === 'totalstudents' && parseInt(fields[i].value) === isNaN) {
         error = 'Field expects a number.';
       } else if (fields[i].name === 'schoolrole' && fields[i].value.toLowerCase() === 'other' && $id('schoolroleother').val() === '') {
@@ -356,7 +356,7 @@ $id('second-block')
         isOnError = true;
       }
     };
-
+    
     if (!isOnError) {
       $
         .ajax({

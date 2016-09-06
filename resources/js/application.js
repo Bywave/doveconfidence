@@ -358,8 +358,7 @@ $id('second-block')
     };
     
     if (!isOnError) {
-      $
-        .ajax({
+      $.ajax({
           type: 'POST',
           url: 'http://integr8a.trclient.com/UnileverDove_S/Ajaxcall.aspx?do=submit2&name=' + val('name') + '&e=' + val('email').replace('+', '%2B') + '&role=' + (val('schoolrole') === 'Other' ? val('schoolroleother') : val('schoolrole')) + '&NoStud=' + val('totalstudents') + '&NSchool=' + val('schoolname') + '&year=' + val('schoolyear') + '&opt=1',
           crossDomain: true/*,

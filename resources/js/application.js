@@ -132,7 +132,7 @@ function onYouTubeIframeAPIReady() {
     }
   });
 
-  if (currentSlide.data('video-id') && $.cookie('hide_intro_form') === '1') {
+  if (currentSlide && currentSlide.data('video-id') && $.cookie('hide_intro_form') === '1') {
     players[currentSlide.data('video-id')].play();
   }
 }
@@ -151,13 +151,13 @@ Reveal.addEventListener('slidechanged', function(event) {
   touch(true);
 
   var currentSlide = $(event.currentSlide);
-  var previousSlide = $(event.previousSlide)
+  var previousSlide = $(event.previousSlide);
 
   if (currentSlide.find('div.interactive-3').length < 1) {
     $id('pledge-name-form').popup('hide');
   }
 
-  if (previousSlide.data('video-id')) {
+  if (previousSlide && previousSlide.data('video-id')) {
     $('.reveal > .backgrounds')
       .removeClass('dark')
       .css('z-index', 0);
@@ -165,7 +165,7 @@ Reveal.addEventListener('slidechanged', function(event) {
     players[previousSlide.data('video-id')].pause();
   }
 
-  if(currentSlide.data('video-id')) {
+  if(currentSlide && currentSlide.data('video-id')) {
     $('.reveal > .backgrounds')
       .addClass('dark')
       .css('z-index', 2);
